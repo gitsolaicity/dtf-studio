@@ -2,6 +2,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <section className="bg-gradient-to-b from-neutral-900 to-black text-white py-24 px-6">
+        <div className="text-white p-12">Проверка Tailwind</div>
+
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
             DTF-печать и вышивка премиум-класса
