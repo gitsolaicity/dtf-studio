@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -61,9 +62,7 @@ export default function Home() {
       </section>
 
       {/* Футер */}
-      <footer className="py-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} DTF Star Studio. Все права защищены.
-      </footer>
+    <Footer />
     </main>
   );
 }
