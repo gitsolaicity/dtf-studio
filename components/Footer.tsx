@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const open = (url: string) => window.open(url, '_blank');
@@ -10,45 +11,43 @@ export default function Footer() {
 
        {/* Анимационный фон с линиями */}
       <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
-  <div className="flex w-[200%] h-full animate-neonLines">
-    {/* Повторяющаяся линия 1 */}
-    <svg
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      className="w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <linearGradient id="gradientLines" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#9333ea" />
-          <stop offset="50%" stopColor="#06b6d4" />
-          <stop offset="100%" stopColor="#f43f5e" />
-        </linearGradient>
-      </defs>
-      <path
-        fill="none"
-        stroke="url(#gradientLines)"
-        strokeWidth="2"
-        d="M0,160 C240,320, 480,0, 720,160 S1200,320, 1440,160"
-      />
-    </svg>
+  <motion.div
+    className="flex w-[200%] h-full"
+    animate={{ x: ['0%', '-50%'] }}
+    transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
+  >
+    {[1, 2].map((_, i) => (
+      <svg
+       viewBox="0 0 1440 320"
+       preserveAspectRatio="none"
+       className="w-full h-full"
+       xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="gradientLines" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="#9333ea" />
+      <stop offset="50%" stopColor="#06b6d4" />
+      <stop offset="100%" stopColor="#f43f5e" />
+    </linearGradient>
+  </defs>
 
-    {/* Повторяющаяся линия 2 */}
-    <svg
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-      className="w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill="none"
-        stroke="url(#gradientLines)"
-        strokeWidth="6"
-        d="M0,160 C240,320, 480,0, 720,160 S1200,320, 1440,160"
-      />
-    </svg>
-  </div>
+  <path
+    fill="none"
+    stroke="url(#gradientLines)"
+    strokeWidth="4"
+    strokeLinecap="round"
+    d="
+      M0,160
+      C180,80, 360,240, 540,160
+      S900,80, 1080,160
+      S1320,240, 1440,160
+    "
+  />
+</svg>
+    ))}
+  </motion.div>
 </div>
+
 
       {/* Контент футера */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm relative z-10">
@@ -140,6 +139,16 @@ export default function Footer() {
       <div className="mt-10 text-center text-xs text-gray-600 select-none z-10 relative">
         © {new Date().getFullYear()} Blacklight365. Все права защищены.
       </div>
+      <motion.div
+  className="absolute -top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"
+  animate={{ x: ['0%', '-30%'] }}
+  transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
+>
+  {Array.from({ length: 20 }).map((_, i) => (
+    <span key={i} className="mr-32">BLACKLIGHT</span>
+  ))}
+</motion.div>
+
     </footer>
   );
 }
