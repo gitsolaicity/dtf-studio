@@ -76,3 +76,30 @@ function ServiceCard({ title, description }: { title: string; description: strin
   );
 }
 
+<section id="top" className="relative bg-black text-white py-20 pt-32 px-6 text-center overflow-hidden">
+  <h1 className="text-4xl md:text-6xl font-bold mb-4">DTF-Печать на Одежде</h1>
+  <p className="text-lg md:text-xl mb-6">Яркие и долговечные принты для любого типа ткани</p>
+  <a href="#services" className="inline-block bg-white text-black font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">
+    Узнать больше
+  </a>
+
+  {/* Анимированный фон */}
+  <div className="absolute inset-0 -z-10 opacity-30 pointer-events-none overflow-hidden">
+    <div className="w-[200%] h-full animate-neonLines">
+      <svg
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          d="M0,160 C240,320, 480,0, 720,160 S1200,320, 1440,160"
+        />
+      </svg>
+    </div>
+  </div>
+</section>
+
