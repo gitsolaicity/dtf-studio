@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+    neon: '0 0 20px rgba(6, 182, 212, 0.7)',
+  },
       keyframes: {
         slideDown: {
           '0%': { opacity: 0, transform: 'translateY(-10px)' },
