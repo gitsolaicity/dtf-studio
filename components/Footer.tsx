@@ -18,6 +18,7 @@ export default function Footer() {
   >
     {[1, 2].map((_, i) => (
       <svg
+      key={i}
        viewBox="0 0 1440 320"
        preserveAspectRatio="none"
        className="w-full h-full"
@@ -141,11 +142,11 @@ export default function Footer() {
       </div>
       <motion.div
   className="absolute -top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"
-  animate={{ x: ['0%', '-30%'] }}
+  animate={{ x: ['0%', '-100%'] }}
   transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
 >
   {Array.from({ length: 20 }).map((_, i) => (
-    <span key={i} className="mr-32">BLACKLIGHT</span>
+    <span key={i} className="mr-32">BLACKLIGHT365</span>
   ))}
 </motion.div>
 

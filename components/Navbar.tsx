@@ -1,23 +1,28 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState } from 'react';
+import Link from 'next/link';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50">
+    <nav className="bg-black/80 border-b border-cyan-800 fixed w-full z-50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Логотип */}
-        <div className="text-2xl font-bold text-black">DTF Studio</div>
+        <div className="text-2xl font-bold text-cyan-400 tracking-wider">
+          Blacklight365
+        </div>
 
         {/* Десктоп меню */}
-        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
+        <ul className="hidden md:flex space-x-8 text-sm font-medium">
           {menuItems.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="hover:text-black transition">
+              <Link
+                href={item.href}
+                className="text-gray-400 hover:text-cyan-400 transition duration-300"
+              >
                 {item.label}
               </Link>
             </li>
@@ -31,40 +36,40 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-black transition-transform duration-300 ${
-              isOpen ? "rotate-45 translate-y-1.5" : ""
+            className={`block w-6 h-0.5 bg-cyan-400 transition-transform duration-300 ${
+              isOpen ? 'rotate-45 translate-y-1.5' : ''
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-black transition-opacity duration-300 ${
-              isOpen ? "opacity-0" : "opacity-100"
+            className={`block w-6 h-0.5 bg-cyan-400 transition-opacity duration-300 ${
+              isOpen ? 'opacity-0' : 'opacity-100'
             }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-black transition-transform duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-1.5" : ""
+            className={`block w-6 h-0.5 bg-cyan-400 transition-transform duration-300 ${
+              isOpen ? '-rotate-45 -translate-y-1.5' : ''
             }`}
           />
         </button>
       </div>
 
-      {/* Анимированное меню через Framer Motion */}
+      {/* Мобильное меню */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white overflow-hidden shadow-md"
+            className="md:hidden bg-black border-t border-cyan-800 overflow-hidden"
           >
-            <ul className="flex flex-col space-y-4 p-6 text-gray-700 font-medium">
+            <ul className="flex flex-col space-y-4 p-6 text-gray-300 font-medium text-lg">
               {menuItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block hover:text-black transition"
+                    className="block hover:text-cyan-400 transition duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
@@ -80,9 +85,9 @@ export default function Navbar() {
 }
 
 const menuItems = [
-  { label: "Главная", href: "#top" },
-  { label: "Услуги", href: "#services" },
-  { label: "Наши работы", href: "#portfolio" },
-  { label: "О нас", href: "#about" },
-  { label: "Контакты", href: "#contact" },
+  { label: 'Главная', href: '#top' },
+  { label: 'Услуги', href: '#services' },
+  { label: 'Наши работы', href: '#portfolio' },
+  { label: 'О нас', href: '#about' },
+  { label: 'Контакты', href: '#contact' },
 ];
