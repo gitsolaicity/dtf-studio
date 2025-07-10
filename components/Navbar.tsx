@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className="bg-black/80 border-b border-cyan-800 fixed w-full z-50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Логотип */}
-        <div className="text-2xl font-bold text-cyan-400 tracking-wider">
+        <div className="text-2xl font-bold text-gray-400 tracking-wider">
           Blacklight365
         </div>
 

@@ -10,6 +10,15 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+    const form = e.currentTarget.form;
+    if (form) {
+      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    }
+  }
+};
+
   // Валидность формы — все поля заполнены и email валиден
   const formValid =
     name.trim().length > 0 &&
@@ -108,6 +117,7 @@ export default function ContactSection() {
           rows={5}
           required
           value={message}
+          onKeyDown={handleKeyDown}
           onChange={(e) => {
             setMessage(e.target.value);
             setStatus("idle");

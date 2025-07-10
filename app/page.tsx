@@ -53,7 +53,7 @@ export default function Home() {
   className="bg-[#0a0a0a] text-gray-300 py-24 px-6 text-center border-t border-gray-800"
 >
   <div className="max-w-3xl mx-auto">
-    <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 tracking-wide">
+    <h2 className="text-3xl md:text-4xl font-bold text-gray-400 mb-6 tracking-wide">
       Почему выбирают нас
     </h2>
     <p className="text-lg leading-relaxed text-gray-400">
@@ -100,7 +100,7 @@ export default function Home() {
   <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle,_#06b6d4_1px,_transparent_1px)] bg-[length:22px_22px]" />
 
   {/* Заголовок */}
-  <h2 className="text-4xl font-bold text-center mb-12 text-cyan-400 tracking-widest relative z-10">Наши работы</h2>
+  <h2 className="text-4xl font-bold text-center mb-12 text-gray-400 tracking-widest relative z-10">Наши работы</h2>
 
   {/* Галерея */}
   <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto relative z-10">
@@ -141,14 +141,4 @@ export default function Home() {
     </main>
   );
 }
-
-
-/*function ServiceCard({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-left">
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-700">{description}</p>
-    </div>
-  );
-}*/
 
