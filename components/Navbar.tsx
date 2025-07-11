@@ -33,7 +33,7 @@ export default function Navbar() {
           </div>
 
           {/* Десктоп меню */}
-          <ul className="hidden md:flex space-x-8 text-sm font-medium">
+          <ul className="hidden md:flex space-x-8 text-lg font-medium">
             {menuItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -103,9 +103,9 @@ export default function Navbar() {
 }
 
 const menuItems = [
-  { label: 'Главная', href: '#top' },
-  { label: 'Услуги', href: '#services' },
-  { label: 'Наши работы', href: '#portfolio' },
-  { label: 'О нас', href: '#about' },
-  { label: 'Контакты', href: '#contact' },
+  { label: 'Головна', href: '#top' },
+  { label: 'Послуги', href: '#services' },
+  { label: 'Наші роботи', href: '#portfolio' },
+  { label: 'Про нас', href: '#about' },
+  { label: 'Контакти', href: '#contact' },
 ];

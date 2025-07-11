@@ -53,19 +53,19 @@ export default function Footer() {
       {/* Контент футера */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm relative z-10">
         <div>
-          <h3 className="text-xl font-bold text-white mb-4">Blacklight365</h3>
-          <p className="text-gray-500">
-            Магия света и печати. DTF-студия нового уровня.
+          <h3 className="text-3xl font-bold text-white mb-4">Blacklight365</h3>
+          <p className="text-gray-500 text-lg">
+            Магія світла та друку. DTF-студія нового рівня.
           </p>
         </div>
 
         <div>
-          <h4 className="text-xs uppercase font-semibold tracking-wide text-gray-500 mb-3">О нас</h4>
+          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Про нас</h4>
           <ul className="space-y-2">
-            {['Наша миссия', 'История студии', 'Партнёрство'].map((item, i) => (
+            {['Наша місія', 'Історія студії', 'Партнерство'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-purple-400 transition-colors cursor-pointer"
+                className="hover:text-purple-400 transition-colors cursor-pointer text-lg"
               >
                 {item}
               </li>
@@ -74,12 +74,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase font-semibold tracking-wide text-gray-500 mb-3">Услуги</h4>
+          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Послуги</h4>
           <ul className="space-y-2">
-            {['DTF-печать', 'Дизайн под заказ', 'Опт и мелкий тираж'].map((item, i) => (
+            {['DTF-друк', 'Дизайн на замовлення', 'Опт та дрібний тираж'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-cyan-400 transition-colors cursor-pointer"
+                className="hover:text-cyan-400 transition-colors cursor-pointer text-lg"
               >
                 {item}
               </li>
@@ -88,12 +88,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase font-semibold tracking-wide text-gray-500 mb-3">Навигация</h4>
+          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Навігація</h4>
           <ul className="space-y-2">
-            {['Главная', 'Примеры', 'Контакты'].map((item, i) => (
+            {['Головна', 'Приклади', 'Контакти'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-pink-400 transition-colors cursor-pointer"
+                className="hover:text-pink-400 transition-colors cursor-pointer text-lg"
               >
                 {item}
               </li>
@@ -126,7 +126,7 @@ export default function Footer() {
           onClick={() => open('tel:+380689991414')}
           className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm transition"
         >
-          Позвонить
+          Подзвонити
         </button>
         <button
           onClick={() => open('viber://chat?number=%2B380689991414')}
@@ -138,7 +138,7 @@ export default function Footer() {
 
       {/* Подпись */}
       <div className="mt-10 text-center text-xs text-gray-600 select-none z-10 relative">
-        © {new Date().getFullYear()} Blacklight365. Все права защищены.
+        © {new Date().getFullYear()} Blacklight. Усі права захищені.
       </div>
       <motion.div
   className="absolute -top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"

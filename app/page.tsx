@@ -6,9 +6,9 @@ import ServiceCard from "@/components/ServiceCard";
 import BackgroundScrollStrip from "@/components/BackgroundScrollStrip";
 
 const services = [
-  { title: "Печать по макету", description: "Принт по вашему дизайну на любом виде ткани." },
-  { title: "Создание дизайна", description: "Поможем создать макет или отрисовать ваш эскиз." },
-  { title: "Мелкий и оптовый заказ", description: "Работаем от 1 шт. до больших тиражей с доставкой." },
+  { title: "Друк по макету", description: "Принт за вашим дизайном на будь-якому типі тканини." },
+  { title: "Розробка дизайну", description: "Допоможемо створити макет або намалювати ваш ескіз." },
+  { title: "Дрібне та оптове замовлення", description: "Працюємо від 1 шт. до великих тиражів із доставкою." },
 ];
 
 export default function Home() {
@@ -23,22 +23,23 @@ export default function Home() {
   {/* Неоновая сетка фона */}
   <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(#06b6d4_1px,_transparent_1px)] bg-[length:24px_24px]" />
 
-  {/* Верхняя неоновая линия */}
+  {/* центральная неоновая линия 
   <div className="absolute top-1/2 left-0 w-full h-[2px] bg-cyan-400 blur-sm opacity-90 animate-pulse z-10" />
+  */}
 
   {/* Контент Hero */}
   <div className="relative z-20 max-w-4xl mx-auto">
     <h1 className="text-5xl md:text-6xl font-extrabold text-cyan-400 tracking-wide mb-6 drop-shadow-[0_0_15px_#06b6d4]">
-      DTF-Печать
+      DTF-Друк
     </h1>
     <p className="text-lg md:text-xl text-cyan-100 mb-8">
-      Ярко. Стильно. Надолго.
+      Яскраво. Стильно. Надовго.
     </p>
     <a
       href="#services"
       className="inline-block bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ring-cyan-300"
     >
-      Узнать больше
+      Детальніше
     </a>
   </div>
 
@@ -55,12 +56,12 @@ export default function Home() {
 >
   <div className="max-w-3xl mx-auto">
     <h2 className="text-3xl md:text-4xl font-bold text-gray-400 mb-6 tracking-wide">
-      Почему выбирают нас
+      Чому нас обирають
     </h2>
     <p className="text-lg leading-relaxed text-gray-400">
-      Мы — команда дизайнеров и технологов, влюблённых в печать. Сочетаем высокое качество,
-      индивидуальный подход и креатив, чтобы воплощать ваши идеи в жизнь — от одного экземпляра
-      до крупного тиража.
+      Ми — команда дизайнерів та технологів, закоханих у друк. Поєднуємо високу якість, 
+індивідуальний підхід та креатив, щоб втілювати ваші ідеї в життя – від одного екземпляра 
+до великого тиражу.
     </p>
   </div>
 </section>
@@ -81,7 +82,7 @@ export default function Home() {
 
   <div className="relative z-10 max-w-6xl mx-auto">
     <h2 className="text-4xl font-bold text-center text-cyan-400 mb-12 tracking-widest">
-      Наши услуги
+      Наші послуги
     </h2>
     <div className="grid md:grid-cols-3 gap-8">
       {services.map((item, index) => (
@@ -101,7 +102,7 @@ export default function Home() {
   <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle,_#06b6d4_1px,_transparent_1px)] bg-[length:22px_22px]" />
 
   {/* Заголовок */}
-  <h2 className="text-4xl font-bold text-center mb-12 text-gray-400 tracking-widest relative z-10">Наши работы</h2>
+  <h2 className="text-4xl font-bold text-center mb-12 text-gray-400 tracking-widest relative z-10">Наші роботи</h2>
 
   {/* Галерея */}
   <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto relative z-10">

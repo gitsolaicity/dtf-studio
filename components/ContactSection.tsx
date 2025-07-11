@@ -57,15 +57,15 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-16 px-6 text-gray-300 scroll-mt-20"
+      className="relative py-16 text-gray-300 scroll-mt-10"
     >
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle,_#0e6b8f_1px,_transparent_1px)] bg-[length:22px_22px] pointer-events-none -z-10" />
 
       <h2 className="text-4xl font-semibold mb-6 text-center tracking-wide text-cyan-400">
-        Связаться с нами
+        Зв'язатися з нами
       </h2>
       <p className="mb-8 text-center max-w-md mx-auto text-gray-400">
-        Напишите нам в Viber или через форму ниже
+        Напишіть нам у Viber або через форму нижче
       </p>
 
       <div className="mb-12 text-center">
@@ -76,7 +76,7 @@ export default function ContactSection() {
             boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)',
           }}
         >
-          Написать в Viber
+          Написати у Viber
         </a>
       </div>
 
@@ -88,7 +88,7 @@ export default function ContactSection() {
           id="name"
           type="text"
           name="name"
-          placeholder="Ваше имя"
+          placeholder="Ваше ім'я"
           required
           value={name}
           onChange={(e) => {
@@ -113,7 +113,7 @@ export default function ContactSection() {
         <textarea
           id="message"
           name="message"
-          placeholder="Ваше сообщение"
+          placeholder="Ваше повідомлення"
           rows={5}
           required
           value={message}
@@ -141,17 +141,17 @@ export default function ContactSection() {
       : {}
   }
 >
-  {status === "loading" ? "Отправка..." : "Отправить сообщение"}
+  {status === "loading" ? "Надсилання..." : "Надіслати повідомлення"}
 </button>
 
         {status === "success" && (
           <p className="text-green-400 text-sm pt-4 text-center select-none">
-            ✅ Сообщение отправлено!
+            ✅ Повідомлення надіслано!
           </p>
         )}
         {status === "error" && (
           <p className="text-red-500 text-sm pt-4 text-center select-none">
-            ❌ Ошибка отправки. Попробуйте позже.
+            ❌ Помилка надсилання. Спробуйте пізніше.
           </p>
         )}
       </form>
