@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
+import BackgroundScrollStrip from "@/components/BackgroundScrollStrip";
 
 const services = [
   { title: "Печать по макету", description: "Принт по вашему дизайну на любом виде ткани." },
@@ -15,10 +16,10 @@ export default function Home() {
     <main className="min-h-screen bg-white text-gray-900 scroll-smooth">
       <Navbar />
       {/* Hero */}
-      <section
-  id="top"
+      <section id="top"
   className="relative bg-black text-white py-32 px-6 text-center overflow-hidden border-b border-cyan-700"
 >
+  <BackgroundScrollStrip />
   {/* Неоновая сетка фона */}
   <div className="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(#06b6d4_1px,_transparent_1px)] bg-[length:24px_24px]" />
 
