@@ -28,12 +28,12 @@ export default function Navbar() {
       <nav className="bg-black/80 border-b border-cyan-800 fixed w-full z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Логотип */}
-          <div className="text-2xl font-bold text-gray-400 tracking-wider">
-            Blacklight365
+          <div className="text-2xl font-medium text-gray-400 tracking-wider">
+            Blacklight<span className='font-bold'>365</span>
           </div>
 
           {/* Десктоп меню */}
-          <ul className="hidden md:flex space-x-8 text-lg font-medium">
+          <ul className="hidden md:flex space-x-8 text-sm font-medium">
             {menuItems.map((item) => (
               <li key={item.href}>
                 <Link

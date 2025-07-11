@@ -13,7 +13,7 @@ const images = [
 
 export default function BackgroundScrollStrip() {
   return (
-    <div className="absolute top-16 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
+    <div className="absolute top-16.5 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
       <motion.div
         className="flex gap-4 w-max"
         animate={{ x: ["0%", "-66%"] }}

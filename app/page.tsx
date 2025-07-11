@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
@@ -37,7 +38,7 @@ export default function Home() {
     </p>
     <a
       href="#services"
-      className="inline-block bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ring-cyan-300"
+      className="inline-block bg-cyan-500 hover:bg-cyan-300 text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ring-cyan-200"
     >
       Детальніше
     </a>

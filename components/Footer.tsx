@@ -60,12 +60,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Про нас</h4>
+          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Про нас</h4>
           <ul className="space-y-2">
             {['Наша місія', 'Історія студії', 'Партнерство'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-purple-400 transition-colors cursor-pointer text-lg"
+                className="hover:text-purple-400 transition-colors cursor-pointer text-sm"
               >
                 {item}
               </li>
@@ -74,12 +74,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Послуги</h4>
+          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Послуги</h4>
           <ul className="space-y-2">
             {['DTF-друк', 'Дизайн на замовлення', 'Опт та дрібний тираж'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-cyan-400 transition-colors cursor-pointer text-lg"
+                className="hover:text-cyan-400 transition-colors cursor-pointer text-sm"
               >
                 {item}
               </li>
@@ -88,12 +88,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="text-lg uppercase font-semibold tracking-wide text-gray-500 mb-3">Навігація</h4>
+          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Навігація</h4>
           <ul className="space-y-2">
             {['Головна', 'Приклади', 'Контакти'].map((item, i) => (
               <li
                 key={i}
-                className="hover:text-pink-400 transition-colors cursor-pointer text-lg"
+                className="hover:text-pink-400 transition-colors cursor-pointer text-sm"
               >
                 {item}
               </li>
