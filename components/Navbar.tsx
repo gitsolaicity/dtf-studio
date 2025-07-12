@@ -33,18 +33,28 @@ export default function Navbar() {
           </div>
 
           {/* Десктоп меню */}
-          <ul className="hidden md:flex space-x-8 text-sm font-medium">
-            {menuItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-gray-400 hover:text-cyan-400 transition duration-300"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ul className="hidden md:flex space-x-8 text-sm font-medium items-center">
+  {menuItems.map((item) => (
+    <li key={item.href}>
+      <Link
+        href={item.href}
+        className="text-gray-400 hover:text-cyan-400 transition duration-300"
+      >
+        {item.label}
+      </Link>
+    </li>
+  ))}
+
+  {/* Кнопка логина */}
+  <li>
+    <Link
+      href="/login"
+      className="ml-4 border border-cyan-500 text-cyan-400 px-4 py-1 rounded-full hover:bg-cyan-500 hover:text-black transition"
+    >
+      Логин
+    </Link>
+  </li>
+</ul>
 
           {/* Бургер-кнопка */}
           <button
@@ -82,18 +92,30 @@ export default function Navbar() {
               className="md:hidden bg-black border-t border-cyan-800 overflow-hidden z-50 relative"
             >
               <ul className="flex flex-col space-y-4 p-6 text-gray-300 font-medium text-lg">
-                {menuItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="block hover:text-cyan-400 transition duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+  {menuItems.map((item) => (
+    <li key={item.href}>
+      <Link
+        href={item.href}
+        className="block hover:text-cyan-400 transition duration-300"
+        onClick={() => setIsOpen(false)}
+      >
+        {item.label}
+      </Link>
+    </li>
+  ))}
+
+  {/* Логин в бургер-меню */}
+  <li>
+    <Link
+      href="/login"
+      className="block border border-cyan-500 text-cyan-400 text-center rounded-full py-2 hover:bg-cyan-500 hover:text-black transition"
+      onClick={() => setIsOpen(false)}
+    >
+      Логин
+    </Link>
+  </li>
+</ul>
+
             </motion.div>
           )}
         </AnimatePresence>
