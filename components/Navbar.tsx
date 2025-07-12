@@ -51,7 +51,7 @@ export default function Navbar() {
       href="/login"
       className="ml-4 border border-cyan-500 text-cyan-400 px-4 py-1 rounded-full hover:bg-cyan-500 hover:text-black transition"
     >
-      Логин
+      Увійти в кабінет
     </Link>
   </li>
 </ul>
@@ -111,7 +111,7 @@ export default function Navbar() {
       className="block border border-cyan-500 text-cyan-400 text-center rounded-full py-2 hover:bg-cyan-500 hover:text-black transition"
       onClick={() => setIsOpen(false)}
     >
-      Логин
+      Увійти в кабінет
     </Link>
   </li>
 </ul>
