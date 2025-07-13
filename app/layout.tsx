@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "BlackLight365",
-  description: "Премиальная DTF-печать и вышивка на заказ",
+  description: "Преміальний DTF-друк та вишивка на замовлення",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
