@@ -18,7 +18,7 @@ export default function DashboardSidebar() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col bg-black border-r border-cyan-800 w-64 min-h-screen px-6 py-8 text-white fixed left-0 top-0 z-40">
+      <aside className="hidden lg:block md:flex flex-col bg-black border-r border-cyan-800 w-64 min-h-screen px-6 py-8 text-white fixed left-0 top-0 z-40">
         <div className="text-2xl font-bold text-cyan-400 mb-10 tracking-wide">
           Панель <span className="text-white">управления</span>
         </div>
