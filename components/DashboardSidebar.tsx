@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, Users, ClipboardList, Settings } from 'lucide-react';
+import { Home, Users, ClipboardList, Settings, ExternalLink } from 'lucide-react';
 
 const navItems = [
   { label: 'Главная', href: '/dashboard', icon: Home },
   { label: 'Клиенты', href: '/dashboard/clients', icon: Users },
   { label: 'Заказы', href: '/dashboard/orders', icon: ClipboardList },
   { label: 'Настройки', href: '/dashboard/settings', icon: Settings },
+  { label: 'На сайт', href: '/', icon: ExternalLink }, // новый пункт меню
 ];
 
 export default function DashboardSidebar() {
