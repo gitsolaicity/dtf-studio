@@ -1,13 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { registerUser } from '@/lib/supabaseRegister'; // подключаем нашу функцию
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -34,19 +29,13 @@ export default function RegisterPage() {
 
     setStatus('loading');
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/login`,
-      },
-    });
+    const result = await registerUser(email, password);
 
-    if (error) {
-      setErrorMessage(error.message);
-      setStatus('error');
-    } else {
+    if (result.success) {
       setStatus('success');
+    } else {
+      setErrorMessage(result.error || 'Ошибка регистрации');
+      setStatus('error');
     }
   };
 
@@ -67,8 +56,8 @@ export default function RegisterPage() {
                 Почта отправлена!
               </h2>
               <p className="mb-6">
-                Мы отправили письмо с подтверждением на <strong>{email}</strong>.
-                Пожалуйста, подтвердите свой email, чтобы завершить регистрацию.
+                Мы отправили письмо с подтверждением на <strong>{email}</strong>.<br />
+                Пожалуйста, подтвердите свой email.
               </p>
               <a
                 href="/login"

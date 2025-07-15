@@ -1,8 +1,10 @@
 // app/api/auth/[...nextauth]/route.ts
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { createClient } from "@supabase/supabase-js";
 
+// Supabase client
 const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_ANON_KEY!
@@ -16,35 +18,39 @@ const handler = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      authorize: async (credentials) => {
         if (!credentials) return null;
         const { email, password } = credentials;
 
-        // Вход через Supabase
         const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
 
-        if (error || !data.user) {
-          // 💥 Обработка неподтвержденной почты
-          if (error?.message?.toLowerCase().includes("email not confirmed")) {
+        if (error) {
+          console.error("Auth error:", error.message);
+
+          if (error.message === "Email not confirmed") {
+            // Кастомная ошибка, будет доступна в res.error
             throw new Error("EMAIL_NOT_CONFIRMED");
           }
-          // 💥 Прочие ошибки
-          throw new Error("INVALID_CREDENTIALS");
+
+          return null;
         }
 
-        // ✅ Получение роли
-        const { data: profile, error: profileError } = await supabase
+        if (!data?.user) return null;
+
+        // Проверим email подтверждение (дополнительно)
+        if (!data.user.email_confirmed_at) {
+          throw new Error("EMAIL_NOT_CONFIRMED");
+        }
+
+        // Получение роли (если есть)
+        const { data: profile } = await supabase
           .from("users")
           .select("role")
           .eq("id", data.user.id)
           .single();
-
-        if (profileError) {
-          console.warn("Не удалось получить профиль. Назначена роль 'user'");
-        }
 
         return {
           id: data.user.id,
@@ -55,23 +61,22 @@ const handler = NextAuth({
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.role = user.role;
-      }
+      if (user) token.role = user.role;
       return token;
     },
     async session({ session, token }) {
-      if (token?.role) {
-        session.user.role = token.role;
-      }
+      if (token?.role) session.user.role = token.role;
       return session;
     },
   },
+
   pages: {
     signIn: "/login",
   },
+
   secret: process.env.NEXTAUTH_SECRET,
 });
 

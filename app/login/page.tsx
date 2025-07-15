@@ -8,12 +8,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [errorCode, setErrorCode] = useState<string | null>(null);
+  const [resendStatus, setResendStatus] = useState<'idle' | 'sent' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading'>('idle');
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    setErrorCode(null);
+    setResendStatus('idle');
 
     const res = await signIn('credentials', {
       redirect: false,
@@ -24,10 +28,43 @@ export default function LoginPage() {
     if (res?.ok) {
       router.push('/dashboard');
     } else {
-      setStatus('error');
+      if (res?.error === 'EMAIL_NOT_CONFIRMED') {
+        setErrorCode('EMAIL_NOT_CONFIRMED');
+      } else {
+        setErrorCode('INVALID_CREDENTIALS');
+      }
     }
 
     setStatus('idle');
+  };
+
+  const handleResendVerification = async () => {
+    if (!email) {
+      alert('Введіть email для повторної відправки листа.');
+      return;
+    }
+
+    setResendStatus('idle');
+
+    try {
+      const res = await fetch('/api/auth/resend-confirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setResendStatus('sent');
+      } else {
+        console.error('Resend error:', data);
+        setResendStatus('error');
+      }
+    } catch (err) {
+      console.error('Unexpected resend error:', err);
+      setResendStatus('error');
+    }
   };
 
   return (
@@ -50,7 +87,7 @@ export default function LoginPage() {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.trim())}
               required
               className="w-full px-4 py-2 rounded bg-black border border-cyan-700 placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
             />
@@ -72,10 +109,29 @@ export default function LoginPage() {
               {status === 'loading' ? 'Вхід...' : 'Увійти'}
             </button>
 
-            {status === 'error' && (
+            {errorCode === 'INVALID_CREDENTIALS' && (
               <p className="text-red-500 text-sm pt-2 text-center">
                 Невірний email або пароль.
               </p>
+            )}
+
+            {errorCode === 'EMAIL_NOT_CONFIRMED' && (
+              <div className="text-orange-500 text-sm pt-2 text-center space-y-2">
+                <p>Пошта не підтверджена.</p>
+                <button
+                  onClick={handleResendVerification}
+                  className="underline text-cyan-400 hover:text-cyan-300"
+                  type="button"
+                >
+                  Надіслати листа повторно
+                </button>
+                {resendStatus === 'sent' && (
+                  <p className="text-green-500 text-xs">Лист відправлено успішно.</p>
+                )}
+                {resendStatus === 'error' && (
+                  <p className="text-red-400 text-xs">Не вдалося надіслати листа.</p>
+                )}
+              </div>
             )}
           </form>
 
