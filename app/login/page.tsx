@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Eye, EyeOff } from 'lucide-react'; // иконки, можно заменить на свои
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ export default function LoginPage() {
   const [resendStatus, setResendStatus] = useState<'idle' | 'sent' | 'error'>('idle');
   const [status, setStatus] = useState<'idle' | 'loading'>('idle');
   const router = useRouter();
+
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,14 +95,26 @@ export default function LoginPage() {
               className="w-full px-4 py-2 rounded bg-black border border-cyan-700 placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
             />
 
-            <input
-              type="password"
-              placeholder="Пароль"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-2 rounded bg-black border border-cyan-700 placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
-            />
+            <div className="relative">
+  <input
+    type={showLoginPassword ? 'text' : 'password'}
+    placeholder="Пароль"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    required
+    className="w-full px-4 py-2 rounded bg-black border border-cyan-700 placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition pr-12"
+    autoComplete="current-password"
+  />
+  <button
+    type="button"
+    onClick={() => setShowLoginPassword(!showLoginPassword)}
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-cyan-300"
+    tabIndex={-1}
+  >
+    {showLoginPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+  </button>
+</div>
+
 
             <button
               type="submit"

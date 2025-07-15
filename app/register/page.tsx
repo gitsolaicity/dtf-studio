@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { registerUser } from '@/lib/supabaseRegister'; // подключаем нашу функцию
+import { Eye, EyeOff } from 'lucide-react'; // иконки, можно заменить на свои
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -10,6 +11,9 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'error' | 'success'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,25 +94,46 @@ export default function RegisterPage() {
                 autoComplete="email"
               />
 
-              <input
-                type="password"
-                placeholder="Пароль (не менее 8 символов)"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full px-4 py-3 rounded-md bg-black border border-cyan-600 placeholder-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-                autoComplete="new-password"
-              />
+              <div className="relative">
+  <input
+    type={showPassword ? 'text' : 'password'}
+    placeholder="Пароль (не менее 8 символов)"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    required
+    className="w-full px-4 py-3 rounded-md bg-black border border-cyan-600 placeholder-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition pr-12"
+    autoComplete="new-password"
+  />
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-cyan-300"
+    tabIndex={-1}
+  >
+    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+  </button>
+</div>
 
-              <input
-                type="password"
-                placeholder="Подтвердите пароль"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                className="w-full px-4 py-3 rounded-md bg-black border border-cyan-600 placeholder-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-                autoComplete="new-password"
-              />
+<div className="relative">
+  <input
+    type={showConfirmPassword ? 'text' : 'password'}
+    placeholder="Подтвердите пароль"
+    value={confirmPassword}
+    onChange={(e) => setConfirmPassword(e.target.value)}
+    required
+    className="w-full px-4 py-3 rounded-md bg-black border border-cyan-600 placeholder-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition pr-12"
+    autoComplete="new-password"
+  />
+  <button
+    type="button"
+    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-cyan-400 hover:text-cyan-300"
+    tabIndex={-1}
+  >
+    {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+  </button>
+</div>
+
 
               <button
                 type="submit"
