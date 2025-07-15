@@ -24,10 +24,16 @@ export async function registerUser(email: string, password: string) {
     };
   }
 
-  // Пытаемся зарегистрировать пользователя через Supabase Auth
+  // Формируем ссылку для редиректа после подтверждения
+  const redirectTo = `${process.env.NEXT_PUBLIC_SITE_URL}/confirm?ts=${Date.now()}`;
+
+  // Пытаемся зарегистрировать пользователя через Supabase Auth с параметром emailRedirectTo
   const { error } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      emailRedirectTo: redirectTo,
+    },
   });
 
   if (error) {

@@ -8,27 +8,29 @@ export async function POST(req: Request) {
     const email = body?.email;
 
     if (!email || typeof email !== 'string') {
-      return NextResponse.json({ error: 'Email обязателен' }, { status: 400 });
+      return NextResponse.json({ error: 'Email обовʼязковий' }, { status: 400 });
     }
 
     const { error } = await supabaseServer.auth.resend({
       type: 'signup',
       email,
+      options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/confirm?ts=${Date.now()}`
+      }
     });
 
     if (error) {
       console.error('[Resend Error]', error.message);
-      // Чтобы не выдавать детали, сообщаем об успешной отправке даже при ошибке
       return NextResponse.json({
-        message: 'Если такая почта существует — письмо отправлено.',
+        message: 'Якщо така пошта існує — лист надіслано.',
       });
     }
 
     return NextResponse.json({
-      message: 'Письмо отправлено. Проверьте почту.',
+      message: 'Лист надіслано. Перевірте пошту.',
     });
   } catch (e) {
     console.error('[Server Error]', e);
-    return NextResponse.json({ error: 'Серверная ошибка' }, { status: 500 });
+    return NextResponse.json({ error: 'Серверна помилка' }, { status: 500 });
   }
 }
