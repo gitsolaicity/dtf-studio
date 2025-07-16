@@ -1,25 +1,23 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // Контролируемые значения полей
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-    const form = e.currentTarget.form;
-    if (form) {
-      form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      const form = e.currentTarget.form;
+      if (form) {
+        form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+      }
     }
-  }
-};
+  };
 
-  // Валидность формы — все поля заполнены и email валиден
   const formValid =
     name.trim().length > 0 &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) &&
@@ -55,13 +53,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      className="relative py-16 text-gray-300 scroll-mt-10"
-    >
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle,_#0e6b8f_1px,_transparent_1px)] bg-[length:22px_22px] pointer-events-none -z-10" />
-
-      <h2 className="text-4xl font-semibold mb-6 text-center tracking-wide text-cyan-400">
+    <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black border-t border-b border-[#e0e0e0]/20">
+      <h2 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
       </h2>
       <p className="mb-8 text-center max-w-md mx-auto text-gray-400">
@@ -71,10 +64,8 @@ export default function ContactSection() {
       <div className="mb-12 text-center">
         <a
           href="viber://chat?number=%2B380689991414"
-          className="inline-block bg-purple-600 hover:bg-purple-700 transition text-white px-8 py-3 rounded-full shadow-md"
-          style={{
-            boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)',
-          }}
+          className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-8 py-3 rounded-full shadow-md"
+          style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)' }}
         >
           Написати у Viber
         </a>
@@ -82,7 +73,7 @@ export default function ContactSection() {
 
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl mx-auto bg-black bg-opacity-30 backdrop-blur-lg text-gray-200 p-8 rounded-2xl border border-cyan-600 shadow-lg"
+        className="max-w-xl mx-auto bg-[#111111]/90 border border-[#e0e0e0]/20 rounded-xl p-8 shadow-xl backdrop-blur-md"
       >
         <input
           id="name"
@@ -95,7 +86,7 @@ export default function ContactSection() {
             setName(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-4 bg-black bg-opacity-50 border border-cyan-600 rounded-lg px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-70"
+          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
         />
         <input
           id="email"
@@ -108,7 +99,7 @@ export default function ContactSection() {
             setEmail(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-4 bg-black bg-opacity-50 border border-cyan-600 rounded-lg px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-70"
+          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
         />
         <textarea
           id="message"
@@ -122,27 +113,27 @@ export default function ContactSection() {
             setMessage(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-6 bg-black bg-opacity-50 border border-cyan-600 rounded-lg px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-70 resize-none"
+          className="w-full mb-6 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 resize-none transition"
         />
 
         <button
-  type="submit"
-  disabled={!formValid || status === "loading"}
-  className={`w-full text-black font-semibold py-3 rounded-lg shadow-md transition
-    ${
-      formValid
-        ? "bg-cyan-400 hover:bg-cyan-500 shadow-cyan-400/70"
-        : "bg-cyan-600 bg-opacity-50 cursor-not-allowed"
-    }
-  `}
-  style={
-    formValid
-      ? { boxShadow: "0 0 20px rgba(96, 234, 255, 0.8)" }
-      : {}
-  }
->
-  {status === "loading" ? "Надсилання..." : "Надіслати повідомлення"}
-</button>
+          type="submit"
+          disabled={!formValid || status === "loading"}
+          className={`w-full text-black font-semibold py-3 rounded-lg shadow-md transition
+            ${
+              formValid
+                ? "bg-[#e0e0e0] hover:bg-white shadow-[#e0e0e0]/70"
+                : "bg-[#e0e0e0]/90 bg-opacity-50 cursor-not-allowed"
+            }
+          `}
+          style={
+            formValid
+              ? { boxShadow: "0 0 20px rgba(224, 224, 224, 0.8)" }
+              : {}
+          }
+        >
+          {status === "loading" ? "Надсилання..." : "Надіслати повідомлення"}
+        </button>
 
         {status === "success" && (
           <p className="text-green-400 text-sm pt-4 text-center select-none">

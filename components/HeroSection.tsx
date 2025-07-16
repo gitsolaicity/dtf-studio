@@ -1,0 +1,123 @@
+import BackgroundScrollStrip from "@/components/BackgroundScrollStrip";
+
+const sections = [
+  {
+    id: "dtf",
+    title: "DTF-Друк",
+    subtitle: "Яскраво. Стильно. Надовго.",
+    color: "cyan",
+    images: [
+      "/images/cat-dtf.png",
+      "/images/love-dtf.png",
+      "/images/bunny-dtf.png",
+      "/images/wolves-dtf.png",
+      "/images/tattoo-dtf.png",
+    ],
+    reverse: false,
+  },
+  {
+    id: "embroidery",
+    title: "Вишивка",
+    subtitle: "Якісна та точна вишивка для вашого стилю.",
+    color: "cyan",
+    images: [
+      "/images/cat-dtf.png",
+      "/images/love-dtf.png",
+      "/images/bunny-dtf.png",
+      "/images/wolves-dtf.png",
+      "/images/tattoo-dtf.png",
+    ],
+    reverse: true,
+  },
+  {
+    id: "silkscreen",
+    title: "Шелкографія",
+    subtitle: "Надійний друк для будь-яких поверхонь.",
+    color: "cyan",
+    images: [
+      "/images/cat-dtf.png",
+      "/images/love-dtf.png",
+      "/images/bunny-dtf.png",
+      "/images/wolves-dtf.png",
+      "/images/tattoo-dtf.png",
+    ],
+    reverse: false,
+  },
+];
+
+const colorMap = {
+  cyan: {
+    text: "text-cyan-400",
+    subtext: "text-cyan-100",
+    bg: "bg-cyan-500",
+    hover: "hover:bg-cyan-300",
+    ring: "ring-cyan-200",
+    line: "bg-cyan-400",
+    grid: "bg-[radial-gradient(#06b6d4_1px,_transparent_1px)]",
+    shadow: "drop-shadow-[0_0_15px_#06b6d4]",
+  },
+  rose: {
+    text: "text-rose-400",
+    subtext: "text-rose-100",
+    bg: "bg-rose-500",
+    hover: "hover:bg-rose-300",
+    ring: "ring-rose-200",
+    line: "bg-rose-400",
+    grid: "bg-[radial-gradient(#fb7185_1px,_transparent_1px)]",
+    shadow: "drop-shadow-[0_0_15px_#fb7185]",
+  },
+  lime: {
+    text: "text-lime-400",
+    subtext: "text-lime-100",
+    bg: "bg-lime-500",
+    hover: "hover:bg-lime-300",
+    ring: "ring-lime-200",
+    line: "bg-lime-400",
+    grid: "bg-[radial-gradient(#a3e635_1px,_transparent_1px)]",
+    shadow: "drop-shadow-[0_0_15px_#a3e635]",
+  },
+};
+
+export default function HeroSection() {
+  return (
+    <>
+      {sections.map(({ id, title, subtitle, images, reverse, color }) => {
+        const styles = colorMap[color as keyof typeof colorMap];
+        return (
+          <section
+            key={id}
+            id={id}
+            className="relative bg-black text-white py-32 px-6 text-center overflow-hidden border-b border-[#e0e0e0]/20"
+          >
+            <BackgroundScrollStrip images={images} reverse={reverse} />
+
+            {/* Неоновая сетка фона */}
+            <div
+              className={`absolute inset-0 z-0 opacity-20 ${styles.grid}`}
+              aria-hidden="true"
+            />
+
+            {/* Контент секции */}
+            <div className="relative z-20 max-w-4xl mx-auto">
+              <h1 className={`text-5xl md:text-6xl font-extrabold ${styles.text} tracking-wide mb-6 ${styles.shadow}`}>
+                {title}
+              </h1>
+              <p className={`text-lg md:text-xl ${styles.subtext} mb-8`}>
+                {subtitle}
+              </p>
+              <a
+                href="#services"
+                className={`inline-block ${styles.bg} ${styles.hover} text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ${styles.ring}`}
+              >
+                Детальніше
+              </a>
+            </div>
+
+            {/* Нижняя неоновая линия */}
+            <div className={`absolute bottom-0 left-0 w-full h-[2px] ${styles.line} blur-sm opacity-70 z-10`} />
+          </section>
+        );
+      })}
+    </>
+  );
+}

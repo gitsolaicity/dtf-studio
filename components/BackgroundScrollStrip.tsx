@@ -3,24 +3,21 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const images = [
-  "/images/cat-dtf.png",
-  "/images/love-dtf.png",
-  "/images/bunny-dtf.png",
-  "/images/wolves-dtf.png",
-  "/images/tattoo-dtf.png",
-];
+interface BackgroundScrollStripProps {
+  images: string[];
+  reverse?: boolean; // направление анимации
+}
 
-export default function BackgroundScrollStrip() {
+export default function BackgroundScrollStrip({ images, reverse = false }: BackgroundScrollStripProps) {
   return (
-    <div className="absolute top-16.5 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
+    <div className="absolute top-4 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
       <motion.div
-        className="flex gap-4 w-max"
-        animate={{ x: ["0%", "-66%"] }}
-        transition={{ duration: 60, ease: "linear", repeat: Infinity }}
+        className="flex gap-2 w-6xl"
+        animate={{ x: reverse ? ["-66%", "0%"] : ["0%", "-66%"] }}
+        transition={{ duration: 240, ease: "linear", repeat: Infinity }}
       >
         {[...images, ...images].map((src, i) => (
-          <div key={i} className="relative w-[380px] h-[380px] flex-shrink-0 opacity-80">
+          <div key={i} className="relative w-[420px] h-[420px] flex-shrink-0 opacity-80">
             <Image
               src={src}
               alt={`scrolling-print-${i}`}

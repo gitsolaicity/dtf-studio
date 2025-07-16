@@ -1,50 +1,62 @@
-// lib/supabaseRegister.ts
 'use server';
 
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
-);
+import { supabaseAdmin } from './supabaseAdmin';
 
 export async function registerUser(email: string, password: string) {
-  // Проверяем, есть ли уже пользователь с таким email
-  const { data: existingUser, error: checkError } = await supabase
-    .from('users')
-    .select('id')
-    .eq('email', email)
-    .single();
+  try {
+    // Проверяем, существует ли пользователь с таким email
+    const { data: usersData, error: fetchError } = await supabaseAdmin.auth.admin.listUsers();
 
-  if (existingUser) {
+    if (fetchError) {
+      console.error('Ошибка получения пользователей:', fetchError.message);
+      return {
+        success: false,
+        error: 'Ошибка при проверке email.',
+        alreadyExists: false,
+      };
+    }
+
+    const userExists = usersData?.users?.some(
+      (u) => u.email?.toLowerCase() === email.toLowerCase()
+    );
+
+    if (userExists) {
+      return {
+        success: false,
+        error: 'Пользователь с таким email уже существует.',
+        alreadyExists: true,
+      };
+    }
+
+    // Email свободен — пробуем зарегистрировать
+    const { error: signUpError } = await supabaseAdmin.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/login`,
+      },
+    });
+
+    if (signUpError) {
+      console.error('Ошибка при регистрации:', signUpError.message);
+      return {
+        success: false,
+        error: signUpError.message,
+        alreadyExists: false,
+      };
+    }
+
+    return {
+      success: true,
+      message: 'Письмо с подтверждением отправлено.',
+      alreadyExists: false,
+    };
+  } catch (e: any) {
+    console.error('Непредвиденная ошибка:', e.message);
     return {
       success: false,
-      error: 'Пользователь с таким email уже существует.',
-      alreadyExists: true,
+      error: 'Непредвиденная ошибка. Попробуйте позже.',
+      alreadyExists: false,
     };
   }
-
-  // Формируем ссылку для редиректа после подтверждения
-  const redirectTo = `${process.env.NEXT_PUBLIC_SITE_URL}/confirm?ts=${Date.now()}`;
-
-  // Пытаемся зарегистрировать пользователя через Supabase Auth с параметром emailRedirectTo
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      emailRedirectTo: redirectTo,
-    },
-  });
-
-  if (error) {
-    return {
-      success: false,
-      error: error.message,
-    };
-  }
-
-  return {
-    success: true,
-    message: 'Письмо для подтверждения отправлено.',
-  };
 }

@@ -25,10 +25,10 @@ export default function Navbar() {
       </AnimatePresence>
 
       {/* Навбар поверх затемнения */}
-      <nav className="bg-black/80 border-b border-cyan-800 fixed w-full z-50 backdrop-blur-sm">
+      <nav className="bg-black/80 border-b border-[#e0e0e0]/20 fixed w-full z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Логотип */}
-          <div className="text-2xl font-medium text-gray-400 tracking-wider">
+          <div className="text-2xl font-medium text-gray-300 tracking-wider">
             Blacklight<span className='font-bold'>365</span>
           </div>
 
@@ -38,7 +38,7 @@ export default function Navbar() {
     <li key={item.href}>
       <Link
         href={item.href}
-        className="text-gray-400 hover:text-cyan-400 transition duration-300"
+        className="text-gray-300 hover:text-cyan-400 transition duration-300"
       >
         {item.label}
       </Link>
@@ -48,8 +48,8 @@ export default function Navbar() {
   {/* Кнопка логина */}
   <li>
     <Link
-      href="/login"
-      className="ml-4 border border-cyan-500 text-cyan-400 px-4 py-1 rounded-full hover:bg-cyan-500 hover:text-black transition"
+      href="/auth/login"
+      className="ml-4 border border-[#e0e0e0]/20 text-gray-500 px-4 py-1 rounded-full hover:bg-gray-200 hover:text-black transition"
     >
       Увійти в кабінет
     </Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
   {/* Логин в бургер-меню */}
   <li>
     <Link
-      href="/login"
+      href="/auth/login"
       className="block border border-cyan-500 text-cyan-400 text-center rounded-full py-2 hover:bg-cyan-500 hover:text-black transition"
       onClick={() => setIsOpen(false)}
     >
