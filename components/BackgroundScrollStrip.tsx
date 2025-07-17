@@ -10,14 +10,14 @@ interface BackgroundScrollStripProps {
 
 export default function BackgroundScrollStrip({ images, reverse = false }: BackgroundScrollStripProps) {
   return (
-    <div className="absolute top-4 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
+    <div className="absolute top-2 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-30">
       <motion.div
         className="flex gap-2 w-6xl"
         animate={{ x: reverse ? ["-66%", "0%"] : ["0%", "-66%"] }}
         transition={{ duration: 240, ease: "linear", repeat: Infinity }}
       >
         {[...images, ...images].map((src, i) => (
-          <div key={i} className="relative w-[420px] h-[420px] flex-shrink-0 opacity-80">
+          <div key={i} className="relative w-[320px] h-[320px] flex-shrink-0 opacity-80">
             <Image
               src={src}
               alt={`scrolling-print-${i}`}

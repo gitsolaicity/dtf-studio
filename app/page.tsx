@@ -9,16 +9,15 @@ import PortfolioSection from "@/components/PortfolioSection";
 
 export default function Home() {
   return (
-    <> <Navbar />
-    <main className="min-h-screen bg-gray-700 text-gray-900 scroll-smooth">
+    <main className="min-h-screen bg-black text-gray-900 scroll-smooth">
+       <Navbar />
        <HeroSection />
        <AboutSection />
        <ServicesSection />
        <PortfolioSection />
        <ContactSection />
        <Footer />
-       </main>
-       </>
+    </main>
   );
 }
 

@@ -80,6 +80,7 @@ const colorMap = {
 
 export default function HeroSection() {
   return (
+    <div className="pt-16.5"> {/* отступ от фиксированного navbar */}
     <>
       {sections.map(({ id, title, subtitle, images, reverse, color }) => {
         const styles = colorMap[color as keyof typeof colorMap];
@@ -87,15 +88,9 @@ export default function HeroSection() {
           <section
             key={id}
             id={id}
-            className="relative bg-black text-white py-32 px-6 text-center overflow-hidden border-b border-[#e0e0e0]/20"
+            className="relative bg-black text-white py-18 px-6 text-center overflow-hidden border-b border-[#e0e0e0]/20"
           >
             <BackgroundScrollStrip images={images} reverse={reverse} />
-
-            {/* Неоновая сетка фона */}
-            <div
-              className={`absolute inset-0 z-0 opacity-20 ${styles.grid}`}
-              aria-hidden="true"
-            />
 
             {/* Контент секции */}
             <div className="relative z-20 max-w-4xl mx-auto">
@@ -112,12 +107,10 @@ export default function HeroSection() {
                 Детальніше
               </a>
             </div>
-
-            {/* Нижняя неоновая линия */}
-            <div className={`absolute bottom-0 left-0 w-full h-[2px] ${styles.line} blur-sm opacity-70 z-10`} />
           </section>
         );
       })}
     </>
+    </div>
   );
 }
