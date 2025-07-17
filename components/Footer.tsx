@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { FooterContacts } from './FooterContacts';
 
 export default function Footer() {
   const open = (url: string) => window.open(url, '_blank');
@@ -103,38 +104,7 @@ export default function Footer() {
       </div>
 
       {/* Кнопки соцсетей и связи */}
-      <div className="mt-12 flex flex-wrap justify-center gap-3 relative z-10">
-        <button
-          onClick={() => open('https://t.me/blacklight365')}
-          className="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-full text-sm transition"
-        >
-          Telegram
-        </button>
-        <button
-          onClick={() => open('https://www.instagram.com/_blacklight365')}
-          className="bg-pink-600 hover:bg-pink-500 text-white px-4 py-2 rounded-full text-sm transition"
-        >
-          Instagram
-        </button>
-        <button
-          onClick={() => open('https://www.tiktok.com/@blacklight365')}
-          className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm transition"
-        >
-          TikTok
-        </button>
-        <button
-          onClick={() => open('tel:+380689991414')}
-          className="bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm transition"
-        >
-          Подзвонити
-        </button>
-        <button
-          onClick={() => open('viber://chat?number=%2B380689991414')}
-          className="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition"
-        >
-          Viber
-        </button>
-      </div>
+      <FooterContacts />
 
       {/* Подпись */}
       <div className="mt-10 text-center text-xs text-gray-600 select-none z-10 relative">
