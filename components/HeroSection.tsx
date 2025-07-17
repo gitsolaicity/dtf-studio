@@ -4,7 +4,7 @@ const sections = [
   {
     id: "dtf",
     title: "DTF-Друк",
-    subtitle: "Яскраво. Стильно. Надовго.",
+    subtitle: "Яскравий DTF-друк на будь-якому етапі виробництва.",
     color: "cyan",
     images: [
       "/images/cat-dtf.png",
@@ -18,21 +18,21 @@ const sections = [
   {
     id: "embroidery",
     title: "Вишивка",
-    subtitle: "Якісна та точна вишивка для вашого стилю.",
+    subtitle: "Професійна машинна вишивка на етапі розкрою.",
     color: "cyan",
     images: [
-      "/images/cat-dtf.png",
-      "/images/love-dtf.png",
-      "/images/bunny-dtf.png",
-      "/images/wolves-dtf.png",
-      "/images/tattoo-dtf.png",
+      "/images/emb-girl.jpg",
+      "/images/emb-girl-2.jpg",
+      "/images/emb-blue.jpg",
+      "/images/emb-p.jpg",
+      "/images/emb-pillow.jpg",
     ],
     reverse: true,
   },
   {
     id: "silkscreen",
-    title: "Шелкографія",
-    subtitle: "Надійний друк для будь-яких поверхонь.",
+    title: "Шовкографія",
+    subtitle: "Друк шовкографією на деталях крою.",
     color: "cyan",
     images: [
       "/images/cat-dtf.png",
@@ -47,7 +47,7 @@ const sections = [
 
 const colorMap = {
   cyan: {
-    text: "text-cyan-400",
+    text: "text-cyan-200",
     subtext: "text-cyan-100",
     bg: "bg-cyan-500",
     hover: "hover:bg-cyan-300",
