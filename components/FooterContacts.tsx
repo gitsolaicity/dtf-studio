@@ -45,7 +45,7 @@ export function FooterContacts() {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center justify-center bg-gray-800 ${hoverColor} text-white p-3 rounded-full transition cursor-pointer hover:scale-110`}
+          className={`flex items-center justify-center bg-gray-800 ${hoverColor} text-white p-2 rounded-full transition cursor-pointer hover:scale-110`}
           aria-label={label}
         >
           <Icon className="w-5 h-5" />
