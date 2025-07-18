@@ -53,7 +53,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black border-t border-b border-[#e0e0e0]/20">
+    <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black border-t border-[#e0e0e0]/20">
       <h2 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
       </h2>

@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import ServiceCard from '@/components/services/ServiceCard';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import PrimaryButton from '@/components/PrimaryButton';
 
 export default function ServicesOverviewPage() {
   return (
@@ -33,16 +34,10 @@ export default function ServicesOverviewPage() {
   imageSrc="/images/cat-dtf.png"
 />
         </div>
-        <div className="mt-16 text-center">
-  <Link
-    href="/"
-    className="inline-flex items-center gap-2 text-white/80 font-base text-sm px-4 py-2 border border-white/20 rounded-md hover:border-white/40 hover:text-white transition"
-  >
-    <ArrowLeft size={18} />
-    Назад на головну
-  </Link>
-</div>
-      </main>
+        <div className="flex justify-center mt-12">
+  <PrimaryButton href="/" variant="subtle" icon={<ArrowLeft size={18} />}>Назад на головну</PrimaryButton>
+       </div>
+      </main> 
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import BackgroundScrollStrip from "@/components/BackgroundScrollStrip";
 
 const sections = [
   {
+    href: "/services/dtf",
     id: "dtf",
     title: "DTF-Друк",
     subtitle: "Яскравий DTF-друк на будь-якому етапі виробництва.",
@@ -16,6 +17,7 @@ const sections = [
     reverse: false,
   },
   {
+    href: "/services/embroidery",
     id: "embroidery",
     title: "Вишивка",
     subtitle: "Професійна машинна вишивка на етапі розкрою.",
@@ -30,6 +32,7 @@ const sections = [
     reverse: true,
   },
   {
+    href: "/services/silkscreen",
     id: "silkscreen",
     title: "Шовкографія",
     subtitle: "Друк шовкографією на деталях крою.",
@@ -82,7 +85,7 @@ export default function HeroSection() {
   return (
     <div className="pt-16.5"> {/* отступ от фиксированного navbar */}
     <>
-      {sections.map(({ id, title, subtitle, images, reverse, color }) => {
+      {sections.map(({ id, title, subtitle, images, reverse, color, href }) => {
         const styles = colorMap[color as keyof typeof colorMap];
         return (
           <section
@@ -101,7 +104,7 @@ export default function HeroSection() {
                 {subtitle}
               </p>
               <a
-                href="/services"
+                href={href}
                 className={`inline-block ${styles.bg} ${styles.hover} text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ${styles.ring}`}
               >
                 Детальніше

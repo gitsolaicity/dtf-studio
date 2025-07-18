@@ -10,6 +10,7 @@ import DTFOrder from '@/components/services/dtf/DTFOrder';
 import DTFExamples from '@/components/services/dtf/DTFExamples';
 import DTFAdvantages from '@/components/services/dtf/DTFAdvantages';
 import DTFDescription from '@/components/services/dtf/DTFDescription';
+import ServiceNavSection from '@/components/ServiceNavSection';
 
 const sections = [
   { id: 'description', label: 'Опис' },
@@ -49,6 +50,7 @@ export default function DTFPage() {
           <DTFExamples />
           <DTFOrder />
           <WorkflowSection />
+          <ServiceNavSection />
         </main>
       </div>
       <Footer />

@@ -10,6 +10,7 @@ import EmbroideryAdvantages from '@/components/services/embroidery/EmbroideryAdv
 import EmbroideryExamples from '@/components/services/embroidery/EmbroideryExamples';
 import EmbroideryOrder from '@/components/services/embroidery/EmbroideryOrder';
 import WorkflowSection from '@/components/services/WorkflowSection'; // можно переиспользовать
+import ServiceNavSection from '@/components/ServiceNavSection';
 
 const sections = [
   { id: 'description', label: 'Опис' },
@@ -49,6 +50,7 @@ export default function EmbroideryPage() {
           <EmbroideryExamples />
           <EmbroideryOrder />
           <WorkflowSection />
+          <ServiceNavSection />
         </main>
       </div>
       <Footer />

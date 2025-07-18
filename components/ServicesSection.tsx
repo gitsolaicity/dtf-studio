@@ -23,7 +23,7 @@ export default function ServicesSection() {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-gray-300 mb-12 tracking-widest">
-          Наші послуги
+          Переваги
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((item, index) => (

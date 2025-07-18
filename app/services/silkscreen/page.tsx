@@ -10,6 +10,7 @@ import SilkscreenAdvantages from '@/components/services/silkscreen/SilkscreenAdv
 import SilkscreenExamples from '@/components/services/silkscreen/SilkscreenExamples';
 import SilkscreenOrder from '@/components/services/silkscreen/SilkscreenOrder';
 import WorkflowSection from '@/components/services/WorkflowSection'; // можно переиспользовать
+import ServiceNavSection from '@/components/ServiceNavSection';
 
 const sections = [
   { id: 'description', label: 'Опис' },
@@ -49,6 +50,7 @@ export default function SilkscreenPage() {
           <SilkscreenExamples />
           <SilkscreenOrder />
           <WorkflowSection />
+          <ServiceNavSection />
         </main>
       </div>
       <Footer />
