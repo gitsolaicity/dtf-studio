@@ -8,7 +8,7 @@ export default function Footer() {
   const open = (url: string) => window.open(url, '_blank');
 
   return (
-    <footer className="relative bg-black text-gray-300 px-6 py-20 overflow-hidden">
+    <footer className="relative bg-black text-gray-300 px-6 py-20 overflow-hidden border-t border-[#e0e0e0]/20">
 
        {/* Анимационный фон с линиями */}
       <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">

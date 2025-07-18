@@ -101,7 +101,7 @@ export default function HeroSection() {
                 {subtitle}
               </p>
               <a
-                href="#services"
+                href="/services"
                 className={`inline-block ${styles.bg} ${styles.hover} text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ${styles.ring}`}
               >
                 Детальніше

@@ -28,9 +28,9 @@ export default function Navbar() {
       <nav className="bg-black/80 border-b border-[#e0e0e0]/20 fixed w-full z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Логотип */}
-          <div className="text-2xl font-medium text-gray-300 tracking-wider">
-            Blacklight<span className='font-bold'>365</span>
-          </div>
+<Link href="/" className="text-2xl font-medium text-gray-300 tracking-wider">
+  Blacklight<span className="font-bold">365</span>
+</Link>
 
           {/* Десктоп меню */}
           <ul className="hidden md:flex space-x-8 text-sm font-medium items-center">
@@ -125,9 +125,9 @@ export default function Navbar() {
 }
 
 const menuItems = [
-  { label: 'Головна', href: '#top' },
-  { label: 'Послуги', href: '#services' },
-  { label: 'Наші роботи', href: '#portfolio' },
-  { label: 'Про нас', href: '#about' },
-  { label: 'Контакти', href: '#contact' },
+  { label: 'Головна', href: '/#top' },
+  { label: 'Послуги', href: '/#services' },
+  { label: 'Наші роботи', href: '/#portfolio' },
+  { label: 'Про нас', href: '/#about' },
+  { label: 'Контакти', href: '/#contact' },
 ];
