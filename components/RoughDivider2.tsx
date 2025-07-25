@@ -8,18 +8,33 @@ const RoughDivider2 = () => {
   const isInView = useInView(ref, { margin: "-20% 0px -20% 0px", once: false });
 
   const [visible, setVisible] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const hasPlayedRef = useRef(false);
 
   useEffect(() => {
     if (isInView) {
       setVisible(true);
+
+      if (!hasPlayedRef.current) {
+        audioRef.current?.play().catch(() => {
+          // В случае, если браузер блокирует автоплей без взаимодействия
+        });
+        hasPlayedRef.current = true;
+      }
     } else {
-      const timeout = setTimeout(() => setVisible(false), 3000); // 3s delay
+      const timeout = setTimeout(() => {
+        setVisible(false);
+        hasPlayedRef.current = false;
+      }, 3000); // 3s delay
       return () => clearTimeout(timeout);
     }
   }, [isInView]);
 
   return (
     <div ref={ref} className="w-full overflow-hidden">
+      {/* 🔊 Аудио элемент */}
+      <audio ref={audioRef} src="/sfx/brush.mp3" preload="auto" />
+
       <motion.svg
         viewBox="0 0 469.73 16.34"
         preserveAspectRatio="none"
