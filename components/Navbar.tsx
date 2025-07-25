@@ -17,6 +17,7 @@ import {
   FaCut,
   FaPaintBrush,
 } from 'react-icons/fa';
+import BlacklightLogo from './BlacklightLogo';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +46,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Логотип */}
           <Link href="/" className="text-2xl font-medium text-gray-300 tracking-wider">
-            Blacklight<span className="font-bold">365</span>
+            <BlacklightLogo />
           </Link>
 
           {/* Десктоп меню */}

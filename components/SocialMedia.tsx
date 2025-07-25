@@ -36,7 +36,7 @@ const socialLinks = [
   },
 ]
 
-export function FooterContacts() {
+export function SocialMedia() {
   return (
     <div className="mt-12 flex justify-center gap-6 relative z-10">
       {socialLinks.map(({ label, url, Icon, hoverColor }) => (

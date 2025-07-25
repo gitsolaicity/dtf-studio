@@ -1,8 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FooterContacts } from './FooterContacts';
+import { SocialMedia } from './SocialMedia';
+import BlacklightLogo from './BlacklightLogo';
 
 export default function Footer() {
   const open = (url: string) => window.open(url, '_blank');
@@ -54,7 +54,10 @@ export default function Footer() {
       {/* Контент футера */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm relative z-10">
         <div>
-          <h3 className="text-3xl font-bold text-white mb-4">Blacklight365</h3>
+          <div className="flex items-center gap-2 mb-4">
+        <BlacklightLogo />
+      </div>
+
           <p className="text-gray-500 text-lg">
             Магія світла та друку. DTF-студія нового рівня.
           </p>
@@ -104,7 +107,7 @@ export default function Footer() {
       </div>
 
       {/* Кнопки соцсетей и связи */}
-      <FooterContacts />
+      <SocialMedia />
 
       {/* Подпись */}
       <div className="mt-10 text-center text-xs text-gray-600 select-none z-10 relative">

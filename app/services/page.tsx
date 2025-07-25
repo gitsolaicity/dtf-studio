@@ -2,7 +2,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceCard from '@/components/services/ServiceCard';
 import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
 import PrimaryButton from '@/components/PrimaryButton';
 
 export default function ServicesOverviewPage() {
