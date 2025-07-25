@@ -6,6 +6,8 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import RoughDivider from "@/components/RoughDivider";
+import RoughDivider2 from "@/components/RoughDivider2";
 
 export default function Home() {
   return (
@@ -15,7 +17,9 @@ export default function Home() {
        <AboutSection />
        <ServicesSection />
        <PortfolioSection />
+       <RoughDivider2 />
        <ContactSection />
+       <RoughDivider />
        <Footer />
     </main>
   );

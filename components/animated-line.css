@@ -1,0 +1,16 @@
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 470;
+    stroke-dashoffset: 470;
+  }
+  to {
+    stroke-dasharray: 470;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-line path {
+  stroke-dasharray: 470;
+  stroke-dashoffset: 470;
+  animation: drawLine 0.7s ease-out forwards;
+}
