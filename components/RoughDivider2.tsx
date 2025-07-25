@@ -33,7 +33,7 @@ const RoughDivider2 = () => {
   return (
     <div ref={ref} className="w-full overflow-hidden">
       {/* 🔊 Аудио элемент */}
-      <audio ref={audioRef} src="/sfx/brush.mp3" preload="auto" />
+      <audio ref={audioRef} src="/sfx/sword2.mp3" preload="auto" />
 
       <motion.svg
         viewBox="0 0 469.73 16.34"

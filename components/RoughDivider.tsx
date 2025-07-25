@@ -10,31 +10,50 @@ const RoughDivider = () => {
   const [visible, setVisible] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const hasPlayedRef = useRef(false);
+  const hasInteractedRef = useRef(false);
+
+  useEffect(() => {
+    audioRef.current = new Audio("/sfx/sword.mp3");
+    audioRef.current.volume = 0.9;
+
+    const handleInteraction = () => {
+      hasInteractedRef.current = true;
+    };
+
+    const events = ["click", "scroll", "keydown", "touchstart"];
+    events.forEach((event) => window.addEventListener(event, handleInteraction));
+
+    return () => {
+      events.forEach((event) => window.removeEventListener(event, handleInteraction));
+    };
+  }, []);
 
   useEffect(() => {
     if (isInView) {
       setVisible(true);
 
-      if (!hasPlayedRef.current) {
-        audioRef.current?.play().catch(() => {
-          // В случае, если браузер блокирует автоплей без взаимодействия
-        });
-        hasPlayedRef.current = true;
+      if (hasInteractedRef.current && !hasPlayedRef.current && audioRef.current) {
+        audioRef.current
+          .play()
+          .then(() => {
+            hasPlayedRef.current = true;
+          })
+          .catch((err) => {
+            console.warn("Audio play blocked:", err);
+          });
       }
     } else {
       const timeout = setTimeout(() => {
         setVisible(false);
         hasPlayedRef.current = false;
-      }, 3000); // 3s delay
+      }, 3000);
       return () => clearTimeout(timeout);
     }
   }, [isInView]);
 
   return (
     <div ref={ref} className="w-full overflow-hidden">
-      {/* 🔊 Аудио элемент */}
-      <audio ref={audioRef} src="/sfx/sword.mp3" preload="auto" />
-
+      {/* 🔊 Аудио элемент удалён — теперь создаётся через Audio() */}
       <motion.svg
         viewBox="0 0 469.73 7.38"
         preserveAspectRatio="none"
