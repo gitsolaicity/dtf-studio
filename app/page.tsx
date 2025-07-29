@@ -7,7 +7,7 @@ import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import RoughDivider from "@/components/RoughDivider";
-import RoughDivider2 from "@/components/RoughDivider2";
+import RoughDividerInvert from "@/components/RoughDividerInvert";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
        <AboutSection />
        <ServicesSection />
        <PortfolioSection />
-       <RoughDivider2 />
+       <RoughDividerInvert />
        <ContactSection />
        <RoughDivider />
        <Footer />
