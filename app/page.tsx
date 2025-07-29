@@ -6,8 +6,8 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
-import RoughDivider from "@/components/RoughDivider";
-import RoughDividerInvert from "@/components/RoughDividerInvert";
+import RoughDivider from "@/components/decor/RoughDivider";
+import RoughDividerInvert from "@/components/decor/RoughDividerInvert";
 
 export default function Home() {
   return (
