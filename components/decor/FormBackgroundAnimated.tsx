@@ -24,7 +24,7 @@ export function FormBackgroundAnimated() {
   return (
     <motion.svg
       ref={ref}
-      className="absolute inset-0 w-full h-full -z-10 pointer-events-none"
+      className="absolute inset-0 w-full h-full -z-20 pointer-events-none"
       viewBox="0 0 1114.73 396.46"
       preserveAspectRatio="none"
       xmlns="http://www.w3.org/2000/svg"
