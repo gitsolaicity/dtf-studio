@@ -10,7 +10,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative py-20 px-6 bg-black scroll-mt-12 border-t border-[#e0e0e0]/20 overflow-hidden"
+      className="relative py-20 px-6 bg-black scroll-mt-12 overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none z-0"

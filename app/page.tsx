@@ -14,8 +14,11 @@ export default function Home() {
     <main className="min-h-screen bg-black text-gray-900 scroll-smooth">
        <Navbar />
        <HeroSection />
+       <RoughDivider />
        <AboutSection />
+       <RoughDividerInvert />
        <ServicesSection />
+       <RoughDivider />
        <PortfolioSection />
        <RoughDividerInvert />
        <ContactSection />

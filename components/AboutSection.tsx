@@ -2,7 +2,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="bg-[#0a0a0a] text-gray-300 py-24 px-6 text-center border-t border-gray-800"
+      className="bg-[#0a0a0a] text-gray-300 py-24 px-6 text-center"
     >
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-300 mb-6 tracking-wide">

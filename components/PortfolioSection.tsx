@@ -13,7 +13,7 @@ export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="relative bg-black text-white py-20 px-6 scroll-mt-12 border-t border-[#e0e0e0]/20"
+      className="relative bg-black text-white py-20 px-6 scroll-mt-12"
     >
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle,_#06b6d4_1px,_transparent_1px)] bg-[length:22px_22px]" />
 

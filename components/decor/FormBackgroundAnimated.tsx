@@ -11,7 +11,7 @@ export function FormBackgroundAnimated() {
 
   const [visible, setVisible] = useState(false);
   const hasAnimatedOnceRef = useRef(false);
-  const { tryPlay } = useSafeAudioTrigger("/sfx/pincel.mp3", 0.2);
+  const { tryPlay } = useSafeAudioTrigger("/0/sfx/pincel.mp3", 0.2);
 
   useEffect(() => {
     if (isInView && !hasAnimatedOnceRef.current) {

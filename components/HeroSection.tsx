@@ -91,7 +91,7 @@ export default function HeroSection() {
           <section
             key={id}
             id={id}
-            className="relative bg-black text-white py-18 px-6 text-center overflow-hidden border-b border-[#e0e0e0]/20"
+            className="relative bg-black text-white py-18 px-6 text-center overflow-hidden"
           >
             <BackgroundScrollStrip images={images} reverse={reverse} />
 
