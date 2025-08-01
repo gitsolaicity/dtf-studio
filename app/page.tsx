@@ -1,8 +1,8 @@
 
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar/Navbar";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/herosection/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";

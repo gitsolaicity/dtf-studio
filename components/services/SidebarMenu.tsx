@@ -37,7 +37,7 @@ export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
 
       {/* Mobile toggle button */}
       <button
-        className="lg:hidden fixed top-20 right-4 z-50 p-2 bg-black/60 border border-white/20 rounded-md"
+        className="lg:hidden fixed top-20 right-4 z-20 p-2 bg-black/60 border border-white/20 rounded-md"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >
         <Menu size={20} />
@@ -51,7 +51,7 @@ export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 40 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="lg:hidden fixed top-20 right-4 z-40 bg-black/90 border border-white/20 rounded-lg shadow-md p-4 space-y-2"
+            className="lg:hidden fixed top-30 right-4 z-10 bg-black/90 border border-white/20 rounded-lg shadow-md p-4 space-y-2"
           >
             {sections.map(({ id, label }) => (
               <Link

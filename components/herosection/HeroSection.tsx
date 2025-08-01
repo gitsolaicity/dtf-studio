@@ -1,4 +1,4 @@
-import BackgroundScrollStrip from "@/components/BackgroundScrollStrip";
+import BackgroundScrollStrip from "@/components/herosection/BackgroundScrollStrip";
 
 const sections = [
   {

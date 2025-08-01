@@ -3,21 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  FaHome,
-  FaServicestack,
-  FaImages,
-  FaInfoCircle,
-  FaEnvelope,
-  FaChevronDown,
-  FaSignInAlt,
-} from 'react-icons/fa';
-import {
-  FaTshirt,
-  FaCut,
-  FaPaintBrush,
-} from 'react-icons/fa';
-import BlacklightLogo from './BlacklightLogo';
+import { FaChevronDown, FaSignInAlt } from 'react-icons/fa';
+import { Shirt, LucideSpool, Paintbrush } from 'lucide-react';
+import BlacklightLogo from '../BlacklightLogo';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +14,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Затемнение при открытом мобильном меню */}
+      {/* Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -41,15 +29,15 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Навбар */}
+      {/* Navbar */}
       <nav className="bg-black/80 border-b border-[#e0e0e0]/20 fixed w-full z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Логотип */}
+          {/* Logo */}
           <Link href="/" className="text-2xl font-medium text-gray-300 tracking-wider">
             <BlacklightLogo />
           </Link>
 
-          {/* Десктоп меню */}
+          {/* Desktop menu */}
           <ul className="hidden md:flex space-x-8 text-sm font-medium items-center relative">
             {menuItems.map((item) =>
               item.label === 'Послуги' ? (
@@ -60,7 +48,6 @@ export default function Navbar() {
                   onMouseLeave={() => setIsSubmenuOpen(false)}
                 >
                   <div className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition duration-300 cursor-pointer">
-                    <item.icon size={14} />
                     <span>{item.label}</span>
                     <FaChevronDown size={12} className="mt-[2px]" />
                   </div>
@@ -98,16 +85,15 @@ export default function Navbar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition duration-300"
+                    className="text-gray-300 hover:text-cyan-400 transition duration-300"
                   >
-                    <item.icon size={14} />
                     {item.label}
                   </Link>
                 </li>
               )
             )}
 
-            {/* Кнопка логина */}
+            {/* Login button */}
             <li>
               <Link
                 href="/auth/login"
@@ -119,7 +105,7 @@ export default function Navbar() {
             </li>
           </ul>
 
-          {/* Бургер-кнопка */}
+          {/* Burger button */}
           <button
             className="md:hidden flex flex-col justify-center items-center gap-1"
             onClick={() => setIsOpen(!isOpen)}
@@ -143,7 +129,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Мобильное меню */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -162,7 +148,6 @@ export default function Navbar() {
                         onClick={() => setIsMobileSubmenuOpen(!isMobileSubmenuOpen)}
                         className="w-full text-left flex items-center gap-2 hover:text-cyan-400 transition"
                       >
-                        <item.icon size={16} />
                         {item.label}
                         <FaChevronDown size={12} />
                       </button>
@@ -187,17 +172,16 @@ export default function Navbar() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="flex items-center gap-2 hover:text-cyan-400 transition duration-300"
+                        className="hover:text-cyan-400 transition duration-300"
                         onClick={() => setIsOpen(false)}
                       >
-                        <item.icon size={16} />
                         {item.label}
                       </Link>
                     </li>
                   )
                 )}
 
-                {/* Логин в бургер-меню */}
+                {/* Login in mobile */}
                 <li>
                   <Link
                     href="/auth/login"
@@ -217,27 +201,27 @@ export default function Navbar() {
 }
 
 const menuItems = [
-  { label: 'Головна', href: '/#top', icon: FaHome },
-  { label: 'Послуги', href: '/services', icon: FaServicestack },
-  { label: 'Наші роботи', href: '/#portfolio', icon: FaImages },
-  { label: 'Про нас', href: '/#about', icon: FaInfoCircle },
-  { label: 'Контакти', href: '/#contact', icon: FaEnvelope },
+  { label: 'Головна', href: '/#top' },
+  { label: 'Послуги', href: '/services' },
+  { label: 'Наші роботи', href: '/#portfolio' },
+  { label: 'Про нас', href: '/#about' },
+  { label: 'Контакти', href: '/#contact' },
 ];
 
 const servicesSubmenu = [
   {
     label: 'DTF-друк',
     href: '/services/dtf',
-    icon: FaTshirt,
+    icon: Shirt,
   },
   {
     label: 'Вишивка',
     href: '/services/embroidery',
-    icon: FaCut,
+    icon: LucideSpool,
   },
   {
     label: 'Шовкографія',
     href: '/services/silkscreen',
-    icon: FaPaintBrush,
+    icon: Paintbrush,
   },
 ];

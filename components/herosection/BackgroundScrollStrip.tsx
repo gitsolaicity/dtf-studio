@@ -14,7 +14,7 @@ export default function BackgroundScrollStrip({ images, reverse = false }: Backg
       <motion.div
         className="flex gap-2 w-6xl"
         animate={{ x: reverse ? ["-66%", "0%"] : ["0%", "-66%"] }}
-        transition={{ duration: 240, ease: "linear", repeat: Infinity }}
+        transition={{ duration: 60, ease: "linear", repeat: Infinity }}
       >
         {[...images, ...images].map((src, i) => (
           <div key={i} className="relative w-[320px] h-[320px] flex-shrink-0 opacity-80">
