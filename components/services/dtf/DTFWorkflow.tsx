@@ -12,7 +12,7 @@ export default function DTFWorkflow() {
   return (
     <section className="mt-16">
       <h3 className="text-2xl font-bold mb-6 text-center">Етапи DTF-друку</h3>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-2">
         {steps.map((step, index) => (
           <div key={step.label} className="flex flex-col items-center text-center w-full md:w-auto">
             <div className="flex justify-center w-full">
