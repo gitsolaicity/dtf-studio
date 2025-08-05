@@ -26,10 +26,10 @@ const styleMap = {
       text: 'text-white/80 hover:text-white font-medium',
     },
     ghost: {
-      bg: 'bg-transparent',
+      bg: 'bg-white/5',
       hover: 'hover:bg-white/10',
       ring: 'border border-white/30 hover:border-white/50',
-      text: 'text-cyan-300 hover:text-white font-medium',
+      text: 'text-white/85 hover:text-white font-medium',
     },
 
   },
@@ -88,7 +88,7 @@ export default function PrimaryButton({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-2 text-base px-6 py-3 rounded-full shadow-xl transition duration-300
+      className={`inline-flex items-center gap-2 text-sm px-3 py-2 rounded-full shadow-xl transition duration-300
         ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring}`}
     >
       {icon}

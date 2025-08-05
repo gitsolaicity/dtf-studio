@@ -44,7 +44,8 @@ export default function EmbroideryPage() {
       <Navbar />
       <div className="relative flex-1 flex w-full max-w-7xl mx-auto px-4 lg:px-8 py-12">
         <SidebarMenu sections={sections} activeId={activeId} />
-        <main className="flex-1 space-y-32">
+        <main className="flex-1 space-y-24">
+          <ServiceNavSection />
           <EmbroideryDescription />
           <EmbroideryAdvantages />
           <EmbroideryExamples />

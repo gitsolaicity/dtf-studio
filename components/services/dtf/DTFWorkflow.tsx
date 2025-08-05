@@ -15,15 +15,18 @@ export default function DTFWorkflow() {
       <div className="flex flex-col md:flex-row items-center justify-center gap-6">
         {steps.map((step, index) => (
           <div key={step.label} className="flex flex-col items-center text-center w-full md:w-auto">
-            <div className="relative w-full h-80 md:w-46 md:h-46">
-              <Image
-                src={step.src}
-                alt={step.label}
-                height={320}
-                width={320}
-                className="object-contain rounded-md shadow-md bg-amber-200/10"
-              />
-            </div>
+            <div className="flex justify-center w-full">
+  <div className="relative w-80 h-80 md:w-46 md:h-46">
+    <Image
+      src={step.src}
+      alt={step.label}
+      height={320}
+      width={320}
+      className="object-contain rounded-md shadow-md bg-amber-200/10"
+    />
+  </div>
+</div>
+
 
             <p className="mt-2 text-sm py-2 px-3 rounded-md text-gray-300 bg-white/10 w-full md:w-auto">
               {step.label}

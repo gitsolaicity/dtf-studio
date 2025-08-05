@@ -30,14 +30,14 @@ export default function ServiceNavSection() {
   const nextService = services[currentIndex + 1];
 
   return (
-    <section className="flex flex-col md:flex-row justify-between items-center gap-4 mt-24 px-4">
-      {/* Назад до послуг */}
-      <PrimaryButton href="/services" variant="subtle" icon={<ArrowLeft size={18} />}>
-        Назад до послуг
-      </PrimaryButton>
+    <section className="my-10 px-0">
+      <div className="flex flex-wrap justify-items-start gap-3">
+        {/* Назад до послуг */}
+        <PrimaryButton href="/services" variant="subtle" icon={<ArrowLeft size={16} />}>
+          Назад до послуг
+        </PrimaryButton>
 
-      {/* Навигация между услугами */}
-      <div className="flex gap-3">
+        {/* Навигация между услугами */}
         {prevService && (
           <PrimaryButton href={prevService.href} variant="ghost" icon={<ArrowLeft size={16} />}>
             {prevService.title}
@@ -52,3 +52,4 @@ export default function ServiceNavSection() {
     </section>
   );
 }
+

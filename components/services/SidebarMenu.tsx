@@ -37,7 +37,7 @@ export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
 
       {/* Mobile toggle button */}
       <button
-        className="lg:hidden fixed top-20 right-4 z-20 p-2 bg-black/60 border border-white/20 rounded-md"
+        className="lg:hidden fixed top-22 right-4 z-20 p-2 bg-black/60 border border-white/20 rounded-md"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >
         <Menu size={20} />
