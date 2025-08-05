@@ -19,8 +19,9 @@ export default function DTFWorkflow() {
               <Image
                 src={step.src}
                 alt={step.label}
-                fill
-                className="object-contain rounded-md shadow-md"
+                height={320}
+                width={320}
+                className="object-contain rounded-md shadow-md bg-amber-200/10"
               />
             </div>
 
