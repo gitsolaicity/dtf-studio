@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function DTFWorkflow() {
   const steps = [
-    { label: "Розробка дизайну", src: "/images/dtf_a3.png" },
-    { label: "Друк на принтері", src: "/images/dtf_a3.png" },
-    { label: "Обробка порошком", src: "/images/dtf_a3.png" },
-    { label: "Термопрес", src: "/images/dtf_a3.png" },
-    { label: "Готова футболка", src: "/images/dtf_a3.png", isFinal: true },
+    { label: "Розробка дизайну", src: "/images/dtf-a3.png" },
+    { label: "Друк на принтері", src: "/images/dtf-a3.png" },
+    { label: "Обробка порошком", src: "/images/dtf-a3.png" },
+    { label: "Термопрес", src: "/images/dtf-a3.png" },
+    { label: "Готова футболка", src: "/images/dtf-a3.png", isFinal: true },
   ];
 
   return (
