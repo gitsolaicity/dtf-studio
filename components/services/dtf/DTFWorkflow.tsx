@@ -2,16 +2,16 @@ import Image from "next/image";
 
 export default function DTFWorkflow() {
   const steps = [
-    { label: "Розробка дизайну", src: "/images/dtf-a3.png" },
-    { label: "Друк на принтері", src: "/images/dtf-a3.png" },
-    { label: "Обробка порошком", src: "/images/dtf-a3.png" },
-    { label: "Термопрес", src: "/images/dtf-a3.png" },
-    { label: "Готова футболка", src: "/images/dtf-a3.png", isFinal: true },
+    { label: "Розробка дизайну", src: "/images/dtfproc/computedesign.jpg" },
+    { label: "Друк на принтері", src: "/images/dtfproc/dtfprint.jpg" },
+    { label: "Обробка порошком", src: "/images/dtfproc/powdering.jpg" },
+    { label: "Термопрес", src: "/images/dtfproc/thermopress.jpg" },
+    { label: "Готова футболка", src: "/images/dtfproc/finishedproducts2.jpg", isFinal: true },
   ];
 
   return (
     <section className="mt-16">
-      <h3 className="text-2xl font-bold mb-6 text-center">Етапи DTF-друку</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center md:text-left">Етапи DTF-друку</h3>
       <div className="flex flex-col md:flex-row items-center justify-center gap-2">
         {steps.map((step, index) => (
           <div key={step.label} className="flex flex-col items-center text-center w-full md:w-auto">
@@ -22,13 +22,13 @@ export default function DTFWorkflow() {
       alt={step.label}
       height={320}
       width={320}
-      className="object-contain rounded-md shadow-md bg-amber-200/10"
+      className="object-contain rounded-md shadow-md opacity-75"
     />
   </div>
 </div>
 
 
-            <p className="mt-2 text-sm py-2 px-3 rounded-md text-gray-300 bg-white/10 w-full md:w-auto">
+            <p className="mt-2 text-base py-2 px-3 rounded-md text-gray-300">
               {step.label}
             </p>
 
@@ -36,12 +36,12 @@ export default function DTFWorkflow() {
             {index < steps.length - 1 && (
               <>
                 {/* Мобилка: стрелка вниз */}
-                <div className="block md:hidden text-[var(--accent)] text-xl font-black mt-2">
+                <div className="block md:hidden text-white/80 text-xl font-black mt-2">
                   ↓
                 </div>
 
                 {/* Десктоп: стрелка вправо */}
-                <div className="hidden md:block text-[var(--accent)] text-xl font-black mt-2">
+                <div className="hidden md:block text-white/80 text-xl font-black mt-2">
                   ➝
                 </div>
               </>
