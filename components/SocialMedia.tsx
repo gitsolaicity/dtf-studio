@@ -38,14 +38,14 @@ const socialLinks = [
 
 export function SocialMedia() {
   return (
-    <div className="mt-12 flex justify-center gap-6 relative z-10">
+    <div className="mt-8 md:mt-12 flex justify-center gap-6 relative z-10">
       {socialLinks.map(({ label, url, Icon, hoverColor }) => (
         <a
           key={label}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center justify-center bg-gray-800 ${hoverColor} text-white p-2 rounded-full transition cursor-pointer hover:scale-110`}
+          className={`flex items-center justify-center bg-white/10 ${hoverColor} text-white/85 p-2 rounded-full transition cursor-pointer hover:scale-110`}
           aria-label={label}
         >
           <Icon className="w-5 h-5" />

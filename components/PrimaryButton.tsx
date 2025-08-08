@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 
 interface PrimaryButtonProps {
   href: string;
+  className?: string; // ✅ вот это
   children: ReactNode;
   icon?: ReactNode;
   color?: 'cyan' | 'rose' | 'lime';
@@ -82,6 +83,7 @@ export default function PrimaryButton({
   icon,
   color = 'cyan',
   variant = 'solid',
+  className,
 }: PrimaryButtonProps) {
   const styles = styleMap[color][variant];
 
@@ -89,7 +91,7 @@ export default function PrimaryButton({
     <Link
       href={href}
       className={`inline-flex items-center gap-2 text-sm px-3 py-2 rounded-full shadow-xl transition duration-300
-        ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring}`}
+        ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring} ${className ?? ''}`}
     >
       {icon}
       {children}
