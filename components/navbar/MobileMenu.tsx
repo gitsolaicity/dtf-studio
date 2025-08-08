@@ -38,14 +38,14 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
 
           {/* 📜 Прокручиваемый контент */}
           <div className="h-full overflow-y-auto">
-            <ul className="flex flex-col space-y-2 p-6 pb-32 text-gray-300 font-medium text-lg">
+            <ul className="flex flex-col space-y-2 p-2 pb-32 text-gray-300 font-medium text-lg">
               {menuItems.map((item) =>
                 item.label === 'Послуги' ? (
                   <li key={item.label}>
                     <button
                       onClick={() => setIsMobileSubmenuOpen(!isMobileSubmenuOpen)}
                       className={`w-full text-left flex items-center justify-between px-4 py-3 rounded-md transition ${
-                        isMobileSubmenuOpen ? 'bg-white/5 text-cyan-400' : 'hover:text-cyan-400'
+                        isMobileSubmenuOpen ? 'bg-white/10 text-cyan-400' : 'hover:text-cyan-400'
                       }`}
                     >
                       <span>{item.label}</span>
@@ -64,20 +64,31 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="pt-2 space-y-2 pl-6 text-base text-gray-400"
+                          className="pt-2 space-y-2 text-base text-gray-400"
                         >
-                          {servicesSubmenu.map(({ label, href, icon: Icon }) => (
-                            <li key={href}>
-                              <Link
-                                href={href}
-                                className="flex items-center gap-3 px-4 py-3 rounded-md hover:text-white hover:bg-white/5 transition"
-                                onClick={close}
-                              >
-                                <Icon size={16} />
-                                {label}
-                              </Link>
-                            </li>
-                          ))}
+                          {servicesSubmenu.map(({ label, href, icon: Icon, description }) => (
+                             <li key={href}>
+                               <Link
+                                 href={href}
+                                 onClick={close}
+                                 className="flex items-center gap-4 px-4 py-3 rounded-md hover:text-white hover:bg-white/5 transition h-16"
+                               >
+                                 <Icon
+                                   size={16}
+                                   className="text-gray-400 shrink-0"
+                                 />
+                                 <div className="flex flex-col justify-center overflow-hidden">
+                                   <span className="text-base font-medium text-gray-400 truncate">
+                                     {label}
+                                   </span>
+                                   <span className="text-sm text-gray-500 truncate">
+                                     {description}
+                                   </span>
+                                 </div>
+                               </Link>
+                             </li>
+                           ))}
+                           
                         </motion.ul>
                       )}
                     </AnimatePresence>
@@ -104,7 +115,7 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
                   href="/auth/login"
                   variant="subtle"
                   color="cyan"
-                  className="w-full justify-center"
+                  className="w-full max-w-[calc(100%-2rem)] mx-3 justify-center"
                 >
                   Увійти в кабінет
                 </PrimaryButton>
@@ -114,19 +125,15 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
                   href="/auth/register"
                   variant="subtle"
                   color="cyan"
-                  className="w-full justify-center"
+                  className="w-full max-w-[calc(100%-2rem)] mx-3 justify-center"
+
                 >
                   Реєстрація
                 </PrimaryButton>
               </li>
 
               {/* 📱 Соцмережі с заголовком */}
-              <li className="mt-6">
-                <h3 className="text-sm text-center tracking-wide font-light text-white/50 mb-2 px-4">
-                  Ми в соцмережах
-                </h3>
                 <SocialMedia />
-              </li>
             </ul>
           </div>
         </motion.div>

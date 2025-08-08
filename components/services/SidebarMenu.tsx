@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Anchor } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -37,28 +37,36 @@ export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
 
       {/* Mobile toggle button */}
       <button
-        className="lg:hidden fixed top-22 right-4 z-20 p-2 bg-black/60 border border-white/20 rounded-md"
+        aria-label="Навігація по розділах"
+        title="Навігація по розділах"
+        className={`lg:hidden fixed top-22 right-4 z-20 p-2 rounded-md border transition ${
+          mobileMenuOpen
+            ? 'bg-black/80 border-white/40 shadow-[0_0_0_2px_rgba(255,255,255,0.3)]'
+            : 'bg-black/60 border-white/20'
+        }`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >
-        <Menu size={20} />
+        <Anchor size={20} className={mobileMenuOpen ? 'text-white' : 'text-gray-300'} />
       </button>
 
       {/* Animated mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 40 }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="lg:hidden fixed top-30 right-4 z-10 bg-black/90 border border-white/20 rounded-lg shadow-md p-4 space-y-2"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 40 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="lg:hidden fixed top-38 right-4 z-10 bg-black/90 border-2 border-white/40 rounded-xl shadow-lg p-6 space-y-4 w-86"
           >
             {sections.map(({ id, label }) => (
               <Link
                 key={id}
                 href={`#${id}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-sm text-gray-300 hover:text-white"
+                className={`block text-sm transition ${
+                  activeId === id ? 'text-white font-semibold' : 'text-gray-300 hover:text-white'
+                }`}
               >
                 {label}
               </Link>

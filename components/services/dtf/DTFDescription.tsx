@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import DTFWorkflow from "./DTFWorkflow";
 
 export default function DTFDescription() {

@@ -10,7 +10,7 @@ import DTFOrder from '@/components/services/dtf/DTFOrder';
 import DTFExamples from '@/components/services/dtf/DTFExamples';
 import DTFAdvantages from '@/components/services/dtf/DTFAdvantages';
 import DTFDescription from '@/components/services/dtf/DTFDescription';
-import ServiceNavSection from '@/components/ServiceNavSection';
+import ServiceNavSection from '@/components/services/ServiceNavSection';
 
 const sections = [
   { id: 'description', label: 'Опис' },

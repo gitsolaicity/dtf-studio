@@ -27,29 +27,35 @@ export default function DesktopMenu() {
             <AnimatePresence>
               {isSubmenuOpen && (
                 <motion.div
-                  key="submenu"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 top-full pt-4 w-64 bg-black border border-white/10 rounded-lg shadow-lg p-4 space-y-3 z-50"
-                >
-                  {servicesSubmenu.map(({ label, href, icon: Icon }) => (
-                    <Link
-                      key={href}
-                      href={href}
-                      className="group flex items-center gap-3 hover:bg-white/5 p-2 rounded-md transition"
-                    >
-                      <Icon
-                        size={18}
-                        className="text-cyan-400 group-hover:text-cyan-300 transition duration-300"
-                      />
-                      <span className="text-sm text-gray-300 group-hover:text-white transition">
-                        {label}
-                      </span>
-                    </Link>
-                  ))}
-                </motion.div>
+  key="submenu"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: 10 }}
+  transition={{ duration: 0.2 }}
+  className="absolute left-0 top-full pt-4 w-96 bg-black border border-white/10 rounded-lg shadow-lg p-4 space-y-3 z-50"
+>
+  {servicesSubmenu.map(({ label, href, icon: Icon, description }) => (
+    <Link
+      key={href}
+      href={href}
+      className="group flex items-center gap-4 hover:bg-white/5 p-3 rounded-md transition h-20"
+    >
+      <Icon
+        size={24}
+        className="text-gray-300 group-hover:text-cyan-300 transition duration-300 shrink-0"
+      />
+      <div className="flex flex-col justify-center overflow-hidden">
+        <div className="text-sm text-gray-300 group-hover:text-white font-medium truncate">
+          {label}
+        </div>
+        <div className="text-xs text-gray-400 mt-1 leading-snug truncate">
+          {description}
+        </div>
+      </div>
+    </Link>
+  ))}
+</motion.div>
+
               )}
             </AnimatePresence>
           </li>
