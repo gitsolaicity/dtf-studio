@@ -8,17 +8,17 @@ export default function BurgerButton({ isOpen, toggle }: { isOpen: boolean; togg
       aria-label="Toggle menu"
     >
       <span
-        className={`block w-6 h-0.5 bg-cyan-400 transition-transform duration-300 ${
+        className={`block w-6 h-0.5 bg-gray-400 transition-transform duration-300 ${
           isOpen ? 'rotate-45 translate-y-1.5' : ''
         }`}
       />
       <span
-        className={`block w-6 h-0.5 bg-cyan-400 transition-opacity duration-300 ${
+        className={`block w-6 h-0.5 bg-gray-400 transition-opacity duration-300 ${
           isOpen ? 'opacity-0' : 'opacity-100'
         }`}
       />
       <span
-        className={`block w-6 h-0.5 bg-cyan-400 transition-transform duration-300 ${
+        className={`block w-6 h-0.5 bg-gray-400 transition-transform duration-300 ${
           isOpen ? '-rotate-45 -translate-y-1.5' : ''
         }`}
       />
