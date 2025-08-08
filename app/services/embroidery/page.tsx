@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/Footer';
+import SidebarMenu from '@/components/services/SidebarMenu';
 
 import EmbroideryDescription from '@/components/services/embroidery/EmbroideryDescription';
 import EmbroideryAdvantages from '@/components/services/embroidery/EmbroideryAdvantages';
@@ -42,6 +43,7 @@ export default function EmbroideryPage() {
     <div className="min-h-screen flex flex-col bg-[#0d0d0d] text-white">
       <Navbar />
       <div className="relative flex-1 flex w-full max-w-7xl mx-auto px-4 lg:px-8 py-12">
+        <SidebarMenu sections={sections} activeId={activeId} />
         <main className="flex-1 space-y-24">
           <ServiceNavSection />
           <EmbroideryDescription />
