@@ -107,7 +107,7 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
               )}
 
               {/* 🌙 Разделитель */}
-              <div className="mt-4 py-4 border-t border-gray-200 dark:border-white/10" />
+              <div className="mt-4 py-4 border-t border-white/10 dark:border-white/10" />
 
               {/* 🔐 Кнопки входа и регистрации */}
               <li>
