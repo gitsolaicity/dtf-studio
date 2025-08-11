@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { FormBackgroundAnimated } from "./decor/FormBackgroundAnimated";
+import { Paperclip } from 'lucide-react';
+
 
 export default function OrderFormSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -10,6 +12,7 @@ export default function OrderFormSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [services, setServices] = useState<string[]>([]);
+  const [fileName, setFileName] = useState("");
 
   const handleServiceToggle = (service: string) => {
     setServices(prev =>
@@ -45,6 +48,7 @@ export default function OrderFormSection() {
         setEmail("");
         setMessage("");
         setServices([]);
+        setFileName(""); // ✅ сбрасываем имя файла
       } else {
         setStatus("error");
       }
@@ -151,19 +155,38 @@ export default function OrderFormSection() {
           className="w-full mb-6 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 resize-none transition"
         />
 
-        {/* Завантаження файлу */}
-        <div className="mb-6">
-          <label htmlFor="file" className="block text-sm text-gray-400 mb-2">
-            Ескіз або малюнок (до 5MB)
-          </label>
-          <input
-            type="file"
-            name="file"
-            id="file"
-            accept="image/*,.pdf"
-            className="w-full bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0] file:text-white file:bg-gray-700 file:border-none file:px-4 file:py-2 file:rounded-md file:cursor-pointer"
-          />
-        </div>
+  {/* Завантаження файлу */}
+<div className="mb-6">
+  <label htmlFor="file" className="block text-sm text-gray-400 mb-2">
+    Ескіз або малюнок (до 5MB)
+  </label>
+
+  <div className="relative flex items-center justify-between bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0]">
+    {/* Кнопка завантаження */}
+    <input
+      type="file"
+      name="file"
+      id="file"
+      accept="image/*,.pdf"
+      onChange={(e) => {
+        const file = e.target.files?.[0];
+        setFileName(file ? file.name : "");
+        setStatus("idle");
+      }}
+      className="absolute inset-0 opacity-0 cursor-pointer z-10"
+    />
+    <span className="bg-gray-800 text-[#e0e0e0] text-sm px-4 py-1.5 rounded-md cursor-pointer hover:border-[#e0e0e0] transition pointer-events-none inline-flex items-center gap-2">
+  <Paperclip size={16} className="text-[#e0e0e0]" />
+  Обрати файл
+</span>
+
+    {/* Статус файлу */}
+    <span className="text-sm text-gray-400 pointer-events-none">
+      {fileName ? `✅ ${fileName}` : "Файл не обрано"}
+    </span>
+  </div>
+</div>
+
 
         {/* Кнопка */}
         <button
@@ -188,7 +211,7 @@ export default function OrderFormSection() {
         {/* Статус */}
         {status === "success" && (
           <p className="text-green-400 text-sm pt-4 text-center select-none">
-            ✅ Замовлення надіслано!
+            ✅ Дякуємо Вам! Повідомлення надіслано!
           </p>
         )}
         {status === "error" && (
