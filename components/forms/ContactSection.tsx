@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { FormBackgroundAnimated } from "./decor/FormBackgroundAnimated";
+import { FormBackgroundAnimated } from "../decor/FormBackgroundAnimated";
 
 
 export default function ContactSection() {

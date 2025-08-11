@@ -1,6 +1,6 @@
 
 import Navbar from "@/components/navbar/Navbar";
-import ContactSection from "@/components/ContactSection";
+import ContactSection from "@/components/forms/ContactSection";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/herosection/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -8,7 +8,7 @@ import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import RoughDivider from "@/components/decor/RoughDivider";
 import RoughDividerInvert from "@/components/decor/RoughDividerInvert";
-import OrderFormSection from "@/components/OrderFormSection";
+import OrderFormSection from "@/components/forms/OrderFormSection";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { FormBackgroundAnimated } from "./decor/FormBackgroundAnimated";
+import { FormBackgroundAnimated } from "../decor/FormBackgroundAnimated";
 import { Paperclip } from 'lucide-react';
 
 
@@ -59,7 +59,7 @@ export default function OrderFormSection() {
   };
 
   return (
-    <section id="order" className="relative py-16 scroll-mt-10 text-white bg-black">
+    <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black">
       <h2 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
       </h2>
@@ -95,7 +95,7 @@ export default function OrderFormSection() {
             setName(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
+          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#9C9C9C] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
         />
 
         {/* Email */}
@@ -110,7 +110,7 @@ export default function OrderFormSection() {
             setEmail(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
+          className="w-full mb-4 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#9C9C9C] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
         />
 
         {/* Вибір послуг */}
@@ -152,7 +152,7 @@ export default function OrderFormSection() {
             setMessage(e.target.value);
             setStatus("idle");
           }}
-          className="w-full mb-6 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#bbb] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 resize-none transition"
+          className="w-full mb-6 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#9C9C9C] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 resize-none transition"
         />
 
   {/* Завантаження файлу */}
@@ -161,7 +161,7 @@ export default function OrderFormSection() {
     Ескіз або малюнок (до 5MB)
   </label>
 
-  <div className="relative flex items-center justify-between bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0]">
+  <div className="relative flex items-center justify-baseline bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0]">
     {/* Кнопка завантаження */}
     <input
       type="file"
@@ -181,7 +181,7 @@ export default function OrderFormSection() {
 </span>
 
     {/* Статус файлу */}
-    <span className="text-sm text-gray-400 pointer-events-none">
+    <span className="text-sm text-[#9C9C9C] pl-4 pointer-events-none">
       {fileName ? `✅ ${fileName}` : "Файл не обрано"}
     </span>
   </div>
