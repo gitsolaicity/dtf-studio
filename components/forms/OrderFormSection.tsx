@@ -70,8 +70,8 @@ export default function OrderFormSection() {
       <div className="mb-12 text-center">
         <a
           href="viber://chat?number=%2B380689991414"
-          className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-8 py-3 rounded-full shadow-md"
-          style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.6)' }}
+          className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-4 py-1.5 rounded-full shadow-md"
+          style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.2)' }}
         >
           Написати у Viber
         </a>

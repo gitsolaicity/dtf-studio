@@ -1,5 +1,4 @@
 import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/Footer';
 import ServiceCard from '@/components/services/ServiceCard';
 import { ArrowLeft } from 'lucide-react';
 import PrimaryButton from '@/components/PrimaryButton';
@@ -37,7 +36,6 @@ export default function ServicesOverviewPage() {
   <PrimaryButton href="/" variant="subtle" icon={<ArrowLeft size={18} />}>Назад на головну</PrimaryButton>
        </div>
       </main> 
-      <Footer />
     </div>
   );
 }

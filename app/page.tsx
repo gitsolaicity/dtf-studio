@@ -1,7 +1,4 @@
 
-import Navbar from "@/components/navbar/Navbar";
-import ContactSection from "@/components/forms/ContactSection";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/herosection/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -13,7 +10,6 @@ import OrderFormSection from "@/components/forms/OrderFormSection";
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-gray-900 scroll-smooth">
-       <Navbar />
        <HeroSection />
        <RoughDivider />
        <AboutSection />
@@ -23,8 +19,6 @@ export default function Home() {
        <PortfolioSection />
        <RoughDividerInvert />
        <OrderFormSection />
-       <RoughDivider />
-       <Footer />
     </main>
   );
 }

@@ -1,60 +1,92 @@
 'use client';
 
+import Link from 'next/link';
 import FooterBackground from './FooterBackground';
 import { SocialMedia } from './SocialMedia';
 import BlacklightLogo from './BlacklightLogo';
 
 export default function Footer() {
-
   return (
-      <footer className="relative bg-black text-gray-300 px-6 py-20 overflow-hidden">
-      {/* Анимированный фон */}
+    <footer className="relative bg-black text-gray-300 px-6 py-20 overflow-hidden">
       <FooterBackground />
 
-      {/* Контент футера */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-sm relative z-10">
+        {/* Лого и слоган */}
         <div>
           <div className="flex items-center gap-2 mb-4">
             <BlacklightLogo />
           </div>
-          <p className="text-gray-500 text-lg">
-            Магія світла та друку. DTF-студія нового рівня.
+          <p className="text-gray-500 text-lg leading-relaxed">
+            Магія світла та друку. <br />
+            DTF-студія нового рівня.
           </p>
         </div>
 
-        <div>
-          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Про нас</h4>
-          <ul className="space-y-2">
-            {['Наша місія', 'Історія студії', 'Партнерство'].map((item, i) => (
-              <li key={i} className="hover:text-purple-400 transition-colors cursor-pointer text-sm">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Навігація */}
+<div>
+  <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Навігація</h4>
+  <ul className="space-y-2">
+    <li>
+      <Link href="/" className="hover:text-indigo-400 transition-colors text-sm">
+        Головна
+      </Link>
+    </li>
+    <li>
+      <Link href="/examples" className="hover:text-indigo-400 transition-colors text-sm">
+        Приклади
+      </Link>
+    </li>
+    <li>
+      <Link href="/order" className="hover:text-indigo-400 transition-colors text-sm">
+        Замовлення
+      </Link>
+    </li>
+    <li>
+      <Link href="/contact" className="hover:text-indigo-400 transition-colors text-sm">
+        Контакти
+      </Link>
+    </li>
+    <li>
+      <Link href="/privacy-policy" className="hover:text-indigo-400 transition-colors text-sm">
+        Політика конфіденційності
+      </Link>
+    </li>
+    <li>
+      <Link href="/public-offer" className="hover:text-indigo-400 transition-colors text-sm">
+        Публічна оферта
+      </Link>
+    </li>
+    <li>
+      <Link href="/terms-of-use" className="hover:text-indigo-400 transition-colors text-sm">
+        Умови використання
+      </Link>
+    </li>
+  </ul>
+</div>
 
-        <div>
-          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Послуги</h4>
-          <ul className="space-y-2">
-            {['DTF-друк', 'Дизайн на замовлення', 'Опт та дрібний тираж'].map((item, i) => (
-              <li key={i} className="hover:text-cyan-400 transition-colors cursor-pointer text-sm">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
 
-        <div>
-          <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Навігація</h4>
-          <ul className="space-y-2">
-            {['Головна', 'Приклади', 'Контакти'].map((item, i) => (
-              <li key={i} className="hover:text-pink-400 transition-colors cursor-pointer text-sm">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+                        {/* Послуги */}
+                 <div>
+                   <h4 className="text-base font-semibold tracking-wide text-gray-500 mb-3">Послуги</h4>
+                   <ul className="space-y-2">
+                     <li>
+                       <Link href="/services/dtf" className="hover:text-cyan-400 transition-colors text-sm">
+                         DTF-друк
+                       </Link>
+                     </li>
+                     <li>
+                       <Link href="/services/embroidery" className="hover:text-cyan-400 transition-colors text-sm">
+                         Вишивка
+                       </Link>
+                     </li>
+                     <li>
+                       <Link href="/services/silkscreen" className="hover:text-cyan-400 transition-colors text-sm">
+                         Шовкографія
+                       </Link>
+                     </li>
+                   </ul>
+                 </div>
+</div>
 
       {/* Соцсети */}
       <SocialMedia />
