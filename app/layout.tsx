@@ -6,6 +6,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import RoughDivider from "@/components/decor/RoughDivider";
 import Navbar from "@/components/navbar/Navbar";
 import SearchModal from "@/components/search/SearchModal";
+import { SearchProvider } from "@/components/search/SearchContext";
+import SearchHotkeyListener from "@/components/search/SearchHotkeyListener";
 
 export const metadata = {
   title: "Black Light",
@@ -66,11 +68,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
 
         <Providers>
+          <SearchProvider>
           <SearchModal />
+          <SearchHotkeyListener />
           <Navbar />
           {children}
           <RoughDivider />
           <Footer />
+          </SearchProvider>
           <Analytics />
           <SpeedInsights />
         </Providers>

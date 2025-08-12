@@ -1,16 +1,13 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import SearchInput from './SearchInput'
 import { Search } from 'lucide-react'
-import { useSearchHotkey } from '@/app/hooks/useSearchHotkey'
+import { useSearch } from './SearchContext'
 
 export default function SearchModal() {
-  const [open, setOpen] = useState(false)
+  const { open, setOpen } = useSearch()
   const inputRef = useRef<HTMLInputElement>(null)
-
-  // 🔥 Глобальный хоткей Ctrl+Alt+F / Ctrl+Shift+F
-  useSearchHotkey(setOpen)
 
   // 🎯 Фокус на поле при открытии
   useEffect(() => {

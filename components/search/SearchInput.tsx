@@ -22,6 +22,7 @@ interface SearchInputProps {
   className?: string
   inputRef?: React.Ref<HTMLInputElement>
   onClose?: () => void
+  onSelect?: () => void // ✅ добавлено
 }
 
 export default function SearchInput({
@@ -29,6 +30,7 @@ export default function SearchInput({
   className = '',
   inputRef,
   onClose,
+  onSelect,
 }: SearchInputProps) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<typeof mockPages>([])
@@ -62,6 +64,7 @@ export default function SearchInput({
       e.preventDefault()
       if (results[activeIndex]) {
         onClose?.()
+        onSelect?.() // ✅ вызываем при выборе
         router.push(results[activeIndex].url)
       }
     }
@@ -99,7 +102,10 @@ export default function SearchInput({
               <li key={idx}>
                 <Link
                   href={item.url}
-                  onClick={() => onClose?.()}
+                  onClick={() => {
+                    onClose?.()
+                    onSelect?.() // ✅ вызываем при клике
+                  }}
                   className={`block px-4 py-2 rounded text-sm transition ${
                     idx === activeIndex
                       ? 'bg-gray-100 dark:bg-white/15 text-black dark:text-white'
