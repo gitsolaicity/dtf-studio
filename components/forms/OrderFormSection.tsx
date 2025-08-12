@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Link from "next/link";
 import { FormBackgroundAnimated } from "../decor/FormBackgroundAnimated";
 import { Paperclip } from 'lucide-react';
 
@@ -64,18 +65,29 @@ export default function OrderFormSection() {
         Зв'язатися з нами
       </h2>
       <p className="mb-8 text-center max-w-md mx-auto text-gray-400">
-        Напишіть нам у Viber або через форму нижче
+        Зателефонуйте, напишіть нам у Viber або через форму
       </p>
 
-      <div className="mb-12 text-center">
-        <a
-          href="viber://chat?number=%2B380689991414"
-          className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-4 py-1.5 rounded-full shadow-md"
-          style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.2)' }}
-        >
-          Написати у Viber
-        </a>
-      </div>
+      <div className="mb-12 text-center px-8 flex flex-col sm:flex-row justify-center gap-4">
+  {/* Viber */}
+  <a
+    href="viber://chat?number=%2B380689991414"
+    className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-4 py-1.5 rounded-full shadow-md"
+    style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.2)' }}
+  >
+    Написати у Viber
+  </a>
+
+  {/* Дзвінок */}
+  <a
+    href="tel:+380689991414"
+    className="inline-block bg-blue-600 hover:bg-blue-700 transition text-white px-4 py-1.5 rounded-full shadow-md"
+    style={{ boxShadow: '0 0 10px rgba(37, 99, 235, 0.2)' }}
+  >
+    Зателефонувати
+  </a>
+</div>
+
 
       <form
         onSubmit={handleSubmit}
@@ -219,6 +231,19 @@ export default function OrderFormSection() {
             ❌ Помилка надсилання. Спробуйте пізніше.
           </p>
         )}
+        <p className="mt-6 text-sm text-gray-400 text-center select-none">
+  Натискаючи кнопку <strong>“Надіслати замовлення”</strong>, ви погоджуєтесь з нашими{" "}
+  <Link href="/privacy-policy" className="underline hover:text-white transition">
+    політикою конфіденційності
+  </Link>,{" "}
+  <Link href="/terms-of-use" className="underline hover:text-white transition">
+    умовами використання
+  </Link> та{" "}
+  <Link href="/public-offer" className="underline hover:text-white transition">
+    публічною офертою
+  </Link>.
+</p>
+
       </form>
     </section>
   );
