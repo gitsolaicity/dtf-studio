@@ -6,42 +6,52 @@ import { Search } from 'lucide-react'
 import { useSearch } from './SearchContext'
 
 export default function SearchModal() {
-  const { open, setOpen } = useSearch()
+  const { isOpen, setOpen } = useSearch()
   const inputRef = useRef<HTMLInputElement>(null)
 
   // 🎯 Фокус на поле при открытии
   useEffect(() => {
-    if (open) inputRef.current?.focus()
-  }, [open])
+    if (isOpen) inputRef.current?.focus()
+  }, [isOpen])
+
+  // ⛔ Закрытие по Escape
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleKey)
+      return () => window.removeEventListener('keydown', handleKey)
+    }
+  }, [isOpen, setOpen])
+
+  if (!isOpen) return null
 
   return (
-    <>
-      {open && (
-        <div className="fixed inset-0 z-50 bg-black/75 flex items-start justify-center pt-24">
-          <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-xl w-full max-w-xl p-6 relative">
-            {/* 🔍 Поле пошуку */}
-            <SearchInput inputRef={inputRef} onClose={() => setOpen(false)} />
+    <div className="fixed inset-0 z-50 bg-black/75 flex items-start justify-center pt-24">
+      <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-xl w-full max-w-xl p-6 relative">
+        {/* 🔍 Поле пошуку */}
+        <SearchInput inputRef={inputRef} onClose={() => setOpen(false)} />
 
-            {/* 🧠 Подсказка клавиш */}
-            <div className="relative py-3 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
-              <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-4">
-                <div className="flex gap-2 items-center flex-wrap">
-                  <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">↑</kbd>
-                  <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">↓</kbd>
-                  <span>— навігація</span>
-                  <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">Enter</kbd>
-                  <span>— вибір</span>
-                </div>
-                <div className="flex gap-2 items-center justify-end">
-                  <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">Esc</kbd>
-                  <span>— закрити</span>
-                </div>
-              </div>
+        {/* 🧠 Подсказка клавиш */}
+        <div className="relative py-3 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
+          <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-4">
+            <div className="flex gap-2 items-center flex-wrap">
+              <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">↑</kbd>
+              <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">↓</kbd>
+              <span>— навігація</span>
+              <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">Enter</kbd>
+              <span>— вибір</span>
+            </div>
+            <div className="flex gap-2 items-center justify-end">
+              <kbd className="px-2 py-1 bg-black/10 dark:bg-white/10 rounded font-mono">Esc</kbd>
+              <span>— закрити</span>
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   )
 }
 

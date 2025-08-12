@@ -1,29 +1,18 @@
-// hooks/useSearchHotkey.ts
-import { useEffect } from 'react'
+import { useEffect } from "react"
+import { useSearch } from "@/components/search/SearchContext"
 
-export function useSearchHotkey(setOpen: (v: boolean) => void) {
+export const useSearchHotkey = () => {
+  const { open } = useSearch()
+
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      const isInputFocused = ['INPUT', 'TEXTAREA', 'SELECT'].includes(
-        document.activeElement?.tagName || ''
-      )
-
-      const isShortcut =
-        !isInputFocused &&
-        ((e.ctrlKey && e.altKey && e.key.toLowerCase() === 'f') ||
-         (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'f'))
-
-      if (isShortcut) {
+    const handler = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "f") {
         e.preventDefault()
-        setOpen(true)
-      }
-
-      if (e.key === 'Escape') {
-        setOpen(false)
+        open()
       }
     }
 
-    window.addEventListener('keydown', handleKey)
-    return () => window.removeEventListener('keydown', handleKey)
-  }, [setOpen])
+    window.addEventListener("keydown", handler)
+    return () => window.removeEventListener("keydown", handler)
+  }, [open])
 }

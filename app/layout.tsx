@@ -1,13 +1,13 @@
-import Footer from "@/components/Footer";
-import "./globals.css";
-import { Providers } from "./providers";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import RoughDivider from "@/components/decor/RoughDivider";
-import Navbar from "@/components/navbar/Navbar";
-import SearchModal from "@/components/search/SearchModal";
-import { SearchProvider } from "@/components/search/SearchContext";
-import SearchHotkeyListener from "@/components/search/SearchHotkeyListener";
+import Footer from "@/components/Footer"
+import "./globals.css"
+import { Providers } from "./providers"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import RoughDivider from "@/components/decor/RoughDivider"
+import Navbar from "@/components/navbar/Navbar"
+import SearchModal from "@/components/search/SearchModal"
+import { SearchProvider } from "@/components/search/SearchContext"
+import SearchHotkey from "@/components/search/SearchHotkey" // ✅ добавлено
 
 export const metadata = {
   title: "Black Light",
@@ -17,7 +17,7 @@ export const metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-};
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -67,19 +67,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        <Providers>
-          <SearchProvider>
+        {/* 🔍 Глобальный провайдер и модалка */}
+        <SearchProvider>
+          <SearchHotkey /> {/* ✅ теперь хук вызывается корректно */}
           <SearchModal />
-          <SearchHotkeyListener />
-          <Navbar />
-          {children}
-          <RoughDivider />
-          <Footer />
-          </SearchProvider>
-          <Analytics />
-          <SpeedInsights />
-        </Providers>
+
+          {/* 🧩 Остальные провайдеры и контент */}
+          <Providers>
+            <Navbar />
+            {children}
+            <RoughDivider />
+            <Footer />
+          </Providers>
+        </SearchProvider>
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
-  );
+  )
 }

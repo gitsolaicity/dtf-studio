@@ -3,20 +3,30 @@
 import { createContext, useContext, useState } from 'react'
 
 type SearchContextType = {
-  open: boolean
-  setOpen: (v: boolean) => void
+  isOpen: boolean
+  open: () => void
+  close: () => void
+  toggle: () => void
+  setOpen: (value: boolean) => void
 }
 
 const SearchContext = createContext<SearchContextType>({
-  open: false,
+  isOpen: false,
+  open: () => {},
+  close: () => {},
+  toggle: () => {},
   setOpen: () => {},
 })
 
-export function SearchProvider({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false)
+export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setOpen] = useState(false)
+
+  const open = () => setOpen(true)
+  const close = () => setOpen(false)
+  const toggle = () => setOpen(prev => !prev)
 
   return (
-    <SearchContext.Provider value={{ open, setOpen }}>
+    <SearchContext.Provider value={{ isOpen, open, close, toggle, setOpen }}>
       {children}
     </SearchContext.Provider>
   )
