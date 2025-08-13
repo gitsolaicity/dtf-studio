@@ -5,6 +5,9 @@ import { useState, useEffect, useRef } from 'react'
 import { Search, X } from 'lucide-react'
 import Link from 'next/link'
 import './SearchInput.css'
+import { searchSynonyms } from './searchSynonyms'
+import { evaluateExpression } from './evaluateExpression'
+import { searchResponses } from './searchResponses'
 
 const mockPages = [
   { title: 'Головна', url: '/' },
@@ -40,12 +43,34 @@ export default function SearchInput({
   const listRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
-    if (query.trim()) {
-      const filtered = mockPages.filter((page) =>
-        page.title.toLowerCase().includes(query.toLowerCase())
+    const normalizedQuery = query.toLowerCase().trim()
+
+    const filtered = mockPages.filter((page) => {
+      const title = page.title.toLowerCase()
+      const synonymsForPage = searchSynonyms[page.title] || []
+
+      return (
+        title.includes(normalizedQuery) ||
+        synonymsForPage.some((syn) => syn.toLowerCase().includes(normalizedQuery))
       )
-      setResults(filtered)
-      setActiveIndex(filtered.length > 0 ? 0 : -1)
+    })
+
+    const calcResult = evaluateExpression(query)
+    const calcPage =
+      calcResult !== null
+        ? [{ title: `${query} = ${calcResult}`, url: '#' }]
+        : []
+
+    const responseText = searchResponses[normalizedQuery]
+    const responsePage = responseText
+      ? [{ title: responseText, url: '#' }]
+      : []
+
+    if (query.trim()) {
+      setResults([...calcPage, ...responsePage, ...filtered])
+      setActiveIndex(
+        [...calcPage, ...responsePage, ...filtered].length > 0 ? 0 : -1
+      )
     } else {
       setResults([])
       setActiveIndex(-1)
@@ -66,7 +91,9 @@ export default function SearchInput({
       if (results[activeIndex]) {
         onClose?.()
         onSelect?.()
-        router.push(results[activeIndex].url)
+        if (results[activeIndex].url !== '#') {
+          router.push(results[activeIndex].url)
+        }
       }
     }
   }
@@ -89,28 +116,27 @@ export default function SearchInput({
         />
 
         <div className="right-10 h-5 relative">
-  <button
-    type="submit"
-    className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
-      query ? 'opacity-0 pointer-events-none' : 'opacity-100'
-    }`}
-    aria-label="Шукати"
-  >
-    <Search className="h-5 w-5" strokeWidth={1.8} />
-  </button>
+          <button
+            type="submit"
+            className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
+              query ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
+            aria-label="Шукати"
+          >
+            <Search className="h-5 w-5" strokeWidth={1.8} />
+          </button>
 
-  <button
-    type="button"
-    onClick={() => setQuery('')}
-    className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
-      query ? 'opacity-100' : 'opacity-0 pointer-events-none'
-    }`}
-    aria-label="Очистити"
-  >
-    <X className="h-5 w-5" strokeWidth={1.8} />
-  </button>
-</div>
-
+          <button
+            type="button"
+            onClick={() => setQuery('')}
+            className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
+              query ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            aria-label="Очистити"
+          >
+            <X className="h-5 w-5" strokeWidth={1.8} />
+          </button>
+        </div>
       </div>
 
       {query.trim() && (
