@@ -57,16 +57,11 @@ export default function SearchModal() {
 
 // 🧨 Триггер для ручного открытия (например, в Navbar)
 SearchModal.Trigger = function Trigger() {
+  const { setOpen } = useSearch()
+
   return (
     <button
-      onClick={() => {
-        const event = new KeyboardEvent('keydown', {
-          key: 'f',
-          ctrlKey: true,
-          altKey: true,
-        })
-        window.dispatchEvent(event)
-      }}
+      onClick={() => setOpen(true)}
       aria-label="Відкрити пошук"
       className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
     >

@@ -6,7 +6,12 @@ export const useSearchHotkey = () => {
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "f") {
+      const tag = (e.target as HTMLElement)?.tagName
+      const isTyping = ["INPUT", "TEXTAREA"].includes(tag) || (e.target as HTMLElement)?.isContentEditable
+
+      if (isTyping) return
+
+      if (e.ctrlKey && e.altKey && e.code === "KeyF") {
         e.preventDefault()
         open()
       }
@@ -16,3 +21,4 @@ export const useSearchHotkey = () => {
     return () => window.removeEventListener("keydown", handler)
   }, [open])
 }
+
