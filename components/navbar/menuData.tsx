@@ -1,7 +1,6 @@
 import { Shirt, LucideSpool, Paintbrush } from 'lucide-react';
 
 export const menuItems = [
-  { label: 'Головна', href: '/#top' },
   { label: 'Послуги', href: '/services' },
   { label: 'Наші роботи', href: '/#portfolio' },
   { label: 'Про нас', href: '/#about' },

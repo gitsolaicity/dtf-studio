@@ -2,12 +2,14 @@
 
 import { useRouter } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
-import { Search } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
+import './SearchInput.css'
 
 const mockPages = [
   { title: 'Головна', url: '/' },
-  { title: 'Про нас', url: '/about' },
+  { title: 'Про нас', url: '/#about' },
   { title: 'Контакти', url: '/contact' },
   { title: 'DTF-друк', url: '/services/dtf' },
   { title: 'Вишивка', url: '/services/embroidery' },
@@ -22,7 +24,7 @@ interface SearchInputProps {
   className?: string
   inputRef?: React.Ref<HTMLInputElement>
   onClose?: () => void
-  onSelect?: () => void // ✅ добавлено
+  onSelect?: () => void
 }
 
 export default function SearchInput({
@@ -64,7 +66,7 @@ export default function SearchInput({
       e.preventDefault()
       if (results[activeIndex]) {
         onClose?.()
-        onSelect?.() // ✅ вызываем при выборе
+        onSelect?.()
         router.push(results[activeIndex].url)
       }
     }
@@ -86,13 +88,37 @@ export default function SearchInput({
           className="w-full bg-black/70 border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#9C9C9C] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 transition"
           aria-label="Пошук"
         />
-        <button
-          type="submit"
-          className="absolute right-2 text-[#9C9C9C] hover:text-white transition"
-          aria-label="Шукати"
-        >
-          <Search className="h-5 w-5" strokeWidth={1.8} />
-        </button>
+
+        <AnimatePresence mode="wait">
+          {query ? (
+            <motion.button
+              key="clear"
+              type="button"
+              onClick={() => setQuery('')}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="absolute right-4 text-[#9C9C9C] hover:text-white transition"
+              aria-label="Очистити"
+            >
+              <X className="h-5 w-5" strokeWidth={1.8} />
+            </motion.button>
+          ) : (
+            <motion.button
+              key="search"
+              type="submit"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="absolute right-4 text-[#9C9C9C] hover:text-white transition"
+              aria-label="Шукати"
+            >
+              <Search className="h-5 w-5" strokeWidth={1.8} />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
 
       {query.trim() && (
@@ -104,7 +130,7 @@ export default function SearchInput({
                   href={item.url}
                   onClick={() => {
                     onClose?.()
-                    onSelect?.() // ✅ вызываем при клике
+                    onSelect?.()
                   }}
                   className={`block px-4 py-2 rounded text-sm transition ${
                     idx === activeIndex

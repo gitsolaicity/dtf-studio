@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { menuItems, servicesSubmenu } from './menuData';
 import PrimaryButton from '../PrimaryButton';
 import { SocialMedia } from '../SocialMedia';
+import SearchInput from '../search/SearchInput';
 
 export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: () => void }) {
   const [isMobileSubmenuOpen, setIsMobileSubmenuOpen] = useState(false);
@@ -39,6 +40,14 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
           {/* 📜 Прокручиваемый контент */}
           <div className="h-full overflow-y-auto">
             <ul className="flex flex-col space-y-2 p-2 pb-32 text-gray-300 font-medium text-lg">
+              {/* 🔍 Встроенный пошук */}
+  <li className="px-4 pt-2">
+    <SearchInput
+      placeholder="Пошук..."
+      onSelect={close}
+      className="w-full"
+    />
+  </li>
               {menuItems.map((item) =>
                 item.label === 'Послуги' ? (
                   <li key={item.label}>
