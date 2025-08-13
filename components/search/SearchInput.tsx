@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { Search, X } from 'lucide-react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
 import './SearchInput.css'
 
 const mockPages = [
@@ -89,36 +88,29 @@ export default function SearchInput({
           aria-label="Пошук"
         />
 
-        <AnimatePresence mode="wait">
-          {query ? (
-            <motion.button
-              key="clear"
-              type="button"
-              onClick={() => setQuery('')}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="absolute right-4 text-[#9C9C9C] hover:text-white transition"
-              aria-label="Очистити"
-            >
-              <X className="h-5 w-5" strokeWidth={1.8} />
-            </motion.button>
-          ) : (
-            <motion.button
-              key="search"
-              type="submit"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="absolute right-4 text-[#9C9C9C] hover:text-white transition"
-              aria-label="Шукати"
-            >
-              <Search className="h-5 w-5" strokeWidth={1.8} />
-            </motion.button>
-          )}
-        </AnimatePresence>
+        <div className="right-10 h-5 relative">
+  <button
+    type="submit"
+    className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
+      query ? 'opacity-0 pointer-events-none' : 'opacity-100'
+    }`}
+    aria-label="Шукати"
+  >
+    <Search className="h-5 w-5" strokeWidth={1.8} />
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setQuery('')}
+    className={`absolute inset-0 text-[#9C9C9C] hover:text-white transition-opacity duration-150 ${
+      query ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    }`}
+    aria-label="Очистити"
+  >
+    <X className="h-5 w-5" strokeWidth={1.8} />
+  </button>
+</div>
+
       </div>
 
       {query.trim() && (
