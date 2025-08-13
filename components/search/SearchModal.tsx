@@ -29,7 +29,7 @@ export default function SearchModal() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/75 flex items-start justify-center pt-24">
+    <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center pt-24">
       <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-xl w-full max-w-xl p-6 relative">
         {/* 🔍 Поле пошуку */}
         <SearchInput inputRef={inputRef} onClose={() => setOpen(false)} />
