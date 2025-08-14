@@ -7,7 +7,9 @@ import RoughDivider from "@/components/decor/RoughDivider"
 import Navbar from "@/components/navbar/Navbar"
 import SearchModal from "@/components/search/SearchModal"
 import { SearchProvider } from "@/components/search/SearchContext"
-import SearchHotkey from "@/components/search/SearchHotkey" // ✅ добавлено
+import SearchHotkey from "@/components/search/SearchHotkey"
+import Head from "next/head"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 
 export const metadata = {
   title: "Black Light",
@@ -22,8 +24,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="uk" suppressHydrationWarning>
-      <body className="bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300">
-        {/* 👇 Structured data: Organization */}
+      <Head>
+        {/* ✅ Canonical link */}
+        <link rel="canonical" href="https://blacklight365.com" />
+
+        {/* ✅ Structured data: Organization */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -48,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* 👇 Structured data: WebSite */}
+        {/* ✅ Structured data: WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -66,15 +71,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
+      </Head>
 
-        {/* 🔍 Глобальный провайдер и модалка */}
+      <body className="bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300">
         <SearchProvider>
-          <SearchHotkey /> {/* ✅ теперь хук вызывается корректно */}
+          <SearchHotkey />
           <SearchModal />
 
-          {/* 🧩 Остальные провайдеры и контент */}
           <Providers>
             <Navbar />
+            <BreadcrumbJsonLd /> {/* ✅ Автоматическая генерация BreadcrumbList */}
             {children}
             <RoughDivider />
             <Footer />
