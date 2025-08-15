@@ -1,54 +1,22 @@
-// app/public-offer/page.tsx
+import { generateMetadata } from "@/utils/generateMetadata";
+import { StructuredData } from "@/components/seo/StructuredData";
+import PublicOfferContent from "./PublicOfferContent";
 
-export const metadata = {
+const { metadata, structuredData } = generateMetadata({
+  type: "PublicOffer",
   title: "Публічна оферта — Blacklight",
-  description: "Офіційна пропозиція надання послуг друку та вишивки.",
-};
+  description: "Ознайомтесь з умовами використання наших послуг та правовими зобов’язаннями.",
+  slug: "public-offer",
+  logoUrl: "https://blacklight365.com/logo.png",
+});
+
+export { metadata };
 
 export default function PublicOfferPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-28 text-base leading-relaxed text-gray-800 dark:text-gray-200">
-      <h1 className="text-3xl font-semibold mb-6">Публічна оферта</h1>
-
-      <p className="mb-4">
-        Цей документ є офіційною пропозицією компанії <strong>Blacklight</strong> (далі — «Виконавець») щодо надання послуг друку, шовкографії та машинної вишивки будь-якій фізичній або юридичній особі (далі — «Замовник»).
-      </p>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">1. Предмет оферти</h2>
-      <p className="mb-4">
-        Виконавець зобов’язується надати Замовнику послуги з друку (DTF), шовкографії та машинної вишивки відповідно до оформленого замовлення, а Замовник — оплатити такі послуги.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">2. Порядок оформлення замовлення</h2>
-      <ul className="list-disc list-inside space-y-2">
-        <li>Замовлення оформлюється через форму на сайті або шляхом прямого зв’язку з Виконавцем.</li>
-        <li>Замовник надає необхідні файли, опис послуги та контактні дані.</li>
-        <li>Після узгодження деталей Виконавець підтверджує прийняття замовлення.</li>
-      </ul>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">3. Оплата</h2>
-      <p className="mb-4">
-        Оплата здійснюється на умовах передоплати або за домовленістю. Вартість послуг узгоджується індивідуально.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">4. Терміни виконання</h2>
-      <p className="mb-4">
-        Термін виконання залежить від складності замовлення та узгоджується з Замовником. Затримки можливі у випадку форс-мажору.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">5. Відповідальність</h2>
-      <p className="mb-4">
-        Виконавець не несе відповідальності за якість файлів, наданих Замовником. У разі технічних помилок або дефектів, Виконавець зобов’язується усунути їх або надати компенсацію.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-8 mb-4">6. Прийняття оферти</h2>
-      <p className="mb-4">
-        Факт оформлення замовлення, надсилання файлів або здійснення оплати вважається повним і безумовним прийняттям умов цієї оферти.
-      </p>
-
-      <p className="mt-12 text-xs text-gray-500 dark:text-gray-400">
-        Останнє оновлення: 12 серпня 2025 року
-      </p>
-    </div>
+    <>
+      <StructuredData data={structuredData} />
+      <PublicOfferContent />
+    </>
   );
 }

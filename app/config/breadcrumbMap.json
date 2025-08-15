@@ -1,0 +1,17 @@
+{
+  "/": [
+    { "name": "Головна", "url": "https://blacklight365.com" }
+  ],
+  "/contact": [
+    { "name": "Головна", "url": "https://blacklight365.com" },
+    { "name": "Контакти", "url": "https://blacklight365.com/contact" }
+  ],
+  "/services": [
+    { "name": "Головна", "url": "https://blacklight365.com" },
+    { "name": "Послуги", "url": "https://blacklight365.com/services" }
+  ],
+  "/404": [
+  { "name": "Головна", "url": "https://blacklight365.com" },
+  { "name": "Сторінка не знайдена", "url": "https://blacklight365.com/404" }
+]
+}

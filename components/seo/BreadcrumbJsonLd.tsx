@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { breadcrumbMap } from "@/app/config/breadcrumbs.config";
 
+
 export default function BreadcrumbJsonLd() {
   const pathname = usePathname();
   const items = breadcrumbMap[pathname];
