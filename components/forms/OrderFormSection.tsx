@@ -61,9 +61,9 @@ export default function OrderFormSection() {
 
   return (
     <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black">
-      <h2 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
+      <h1 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
-      </h2>
+      </h1>
       <p className="mb-8 text-center max-w-md mx-auto text-gray-400">
         Зателефонуйте, напишіть нам у Viber або через форму
       </p>

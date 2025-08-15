@@ -1,4 +1,5 @@
-import { generateStructuredData, PageType } from "./structuredData";
+import { generateStructuredData } from "./seo/generateStructuredData";
+import { PageType } from "./seo/types";
 
 interface MetadataOptions {
   type: PageType;
@@ -19,13 +20,41 @@ export function generateMetadata({
   logoUrl,
   priceRange,
   dateModified,
-  extraStructuredData,
+  extraStructuredData = {},
 }: MetadataOptions) {
   const url = `https://blacklight365.com/${slug}`;
+
+  // 🧭 Автоматический breadcrumb
+  const breadcrumb = [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: title.replace(/ — Blacklight$/, ""), url },
+  ];
+
+  const structuredData = generateStructuredData({
+    type,
+    title,
+    description,
+    url,
+    logoUrl,
+    priceRange,
+    dateModified,
+    extra: {
+      ...extraStructuredData,
+      breadcrumb,
+    },
+  });
 
   const metadata = {
     title,
     description,
+    metadataBase: new URL("https://blacklight365.com"),
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       title,
       description,
@@ -47,17 +76,6 @@ export function generateMetadata({
       images: [logoUrl ?? "https://blacklight365.com/logo.png"],
     },
   };
-
-  const structuredData = generateStructuredData({
-    type,
-    title,
-    description,
-    url,
-    logoUrl,
-    priceRange,
-    dateModified,
-    extra: extraStructuredData, // 👈 прокидаємо сюди
-  });
 
   return { metadata, structuredData };
 }

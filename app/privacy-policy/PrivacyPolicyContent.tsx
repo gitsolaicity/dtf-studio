@@ -1,16 +1,8 @@
 'use client';
 
-import { privacyPolicyStructuredData } from './structuredData';
-
 export default function PrivacyPolicyContent() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(privacyPolicyStructuredData),
-        }}
-      />
     <div className="max-w-3xl mx-auto px-4 py-28 text-base leading-relaxed text-gray-800 dark:text-gray-200">
       <h1 className="text-3xl font-semibold mb-6">Політика конфіденційності</h1>
 

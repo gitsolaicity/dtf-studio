@@ -11,11 +11,25 @@ const { metadata, structuredData } = generateMetadata({
   extraStructuredData: {
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+380 68 999 1414",
+      telephone: "+380689991414",
       contactType: "customer support",
       areaServed: "UA",
       availableLanguage: ["uk", "en"],
     },
+    breadcrumb: [
+      { name: "Головна", url: "https://blacklight365.com" },
+      { name: "Контакти", url: "https://blacklight365.com/contact" },
+    ],
+    faq: [
+      {
+        question: "Як зробити замовлення?",
+        answer: "Заповніть форму, оберіть послугу та надішліть ескіз.",
+      },
+      {
+        question: "Які формати файлів підтримуються?",
+        answer: "Ми приймаємо .jpg, .png, .pdf до 5MB.",
+      },
+    ],
   },
 });
 

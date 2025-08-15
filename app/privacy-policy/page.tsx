@@ -8,6 +8,7 @@ const { metadata, structuredData } = generateMetadata({
   description: "Дізнайтесь, як ми збираємо, використовуємо та захищаємо ваші дані.",
   slug: "privacy-policy",
   logoUrl: "https://blacklight365.com/logo.png",
+  dateModified: "2025-08-12",
 });
 
 export { metadata };
