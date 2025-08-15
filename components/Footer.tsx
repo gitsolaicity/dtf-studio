@@ -32,13 +32,13 @@ export default function Footer() {
       </Link>
     </li>
     <li>
-      <Link href="/examples" className="hover:text-indigo-400 transition-colors text-sm">
-        Приклади
+      <Link href="/portfolio" className="hover:text-indigo-400 transition-colors text-sm">
+        Наші роботи
       </Link>
     </li>
     <li>
-      <Link href="/contact" className="hover:text-indigo-400 transition-colors text-sm">
-        Замовлення
+      <Link href="/services" className="hover:text-indigo-400 transition-colors text-sm">
+        Послуги
       </Link>
     </li>
     <li>

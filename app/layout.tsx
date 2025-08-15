@@ -10,6 +10,11 @@ import { SearchProvider } from "@/components/search/SearchContext"
 import SearchHotkey from "@/components/search/SearchHotkey"
 import Head from "next/head"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
+import {
+  organizationSchema,
+  websiteSchema,
+  homepageSchema
+} from "@/lib/schema"
 
 export const metadata = {
   title: "Black Light",
@@ -25,50 +30,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uk" suppressHydrationWarning>
       <Head>
-        {/* ✅ Canonical link */}
         <link rel="canonical" href="https://blacklight365.com" />
 
-        {/* ✅ Structured data: Organization */}
+        {/* ✅ Structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Black Light",
-              "url": "https://blacklight365.com",
-              "logo": "https://blacklight365.com/logo.png",
-              "sameAs": [
-                "https://instagram.com/blacklight365",
-                "https://facebook.com/blacklight365"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+380689991414",
-                "contactType": "customer service",
-                "areaServed": "UA",
-                "availableLanguage": ["Ukrainian"]
-              }
-            }),
+            __html: JSON.stringify(organizationSchema)
           }}
         />
-
-        {/* ✅ Structured data: WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Black Light",
-              "url": "https://blacklight365.com",
-              "inLanguage": "uk",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://blacklight365.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }),
+            __html: JSON.stringify(websiteSchema)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(homepageSchema)
           }}
         />
       </Head>
@@ -80,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <Providers>
             <Navbar />
-            <BreadcrumbJsonLd /> {/* ✅ Автоматическая генерация BreadcrumbList */}
+            <BreadcrumbJsonLd />
             {children}
             <RoughDivider />
             <Footer />
