@@ -150,7 +150,7 @@ export default function SearchInput({
                     onClose?.()
                     onSelect?.()
                   }}
-                  className={`block px-4 py-2 rounded text-sm transition ${
+                  className={`block px-4 py-2 rounded text-base transition ${
                     idx === activeIndex
                       ? 'bg-gray-100 dark:bg-white/15 text-black dark:text-white'
                       : 'hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-300'

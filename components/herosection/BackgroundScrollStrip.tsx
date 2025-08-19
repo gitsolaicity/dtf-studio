@@ -10,7 +10,7 @@ interface BackgroundScrollStripProps {
 
 export default function BackgroundScrollStrip({ images, reverse = false }: BackgroundScrollStripProps) {
   return (
-    <div className="absolute top-2 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-60">
+    <div className="absolute top-2 left-0 w-full overflow-hidden z-0 pointer-events-none opacity-40">
       <motion.div
         className="flex gap-2 w-6xl"
         animate={{ x: reverse ? ["-66%", "0%"] : ["0%", "-66%"] }}

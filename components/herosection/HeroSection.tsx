@@ -1,4 +1,5 @@
 import BackgroundScrollStrip from "@/components/herosection/BackgroundScrollStrip";
+import PrimaryButton from "../PrimaryButton";
 
 const sections = [
   {
@@ -59,26 +60,6 @@ const colorMap = {
     grid: "bg-[radial-gradient(#06b6d4_1px,_transparent_1px)]",
     shadow: "drop-shadow-[0_0_15px_#06b6d4]",
   },
-  rose: {
-    text: "text-rose-400",
-    subtext: "text-rose-100",
-    bg: "bg-rose-500",
-    hover: "hover:bg-rose-300",
-    ring: "ring-rose-200",
-    line: "bg-rose-400",
-    grid: "bg-[radial-gradient(#fb7185_1px,_transparent_1px)]",
-    shadow: "drop-shadow-[0_0_15px_#fb7185]",
-  },
-  lime: {
-    text: "text-lime-400",
-    subtext: "text-lime-100",
-    bg: "bg-lime-500",
-    hover: "hover:bg-lime-300",
-    ring: "ring-lime-200",
-    line: "bg-lime-400",
-    grid: "bg-[radial-gradient(#a3e635_1px,_transparent_1px)]",
-    shadow: "drop-shadow-[0_0_15px_#a3e635]",
-  },
 };
 
 export default function HeroSection() {
@@ -103,12 +84,15 @@ export default function HeroSection() {
               <p className={`text-lg md:text-xl ${styles.subtext} mb-8`}>
                 {subtitle}
               </p>
-              <a
+              
+              <PrimaryButton 
                 href={href}
-                className={`inline-block ${styles.bg} ${styles.hover} text-black font-semibold px-8 py-3 rounded-full shadow-xl transition duration-300 ring-2 ${styles.ring}`}
+                variant="solid"
+                color="cyan"
+                className={`inline-block ${styles.bg} ${styles.hover} text-black font-semibold rounded-full shadow-xl transition duration-300 ring-2 ${styles.ring}`}
               >
                 Детальніше
-              </a>
+              </PrimaryButton>
             </div>
           </section>
         );
