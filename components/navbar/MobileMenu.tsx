@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
           <div className="h-full overflow-y-auto">
             <ul className="flex flex-col space-y-2 p-2 pb-32 text-gray-300 font-medium text-lg">
               {/* 🔍 Встроенный пошук */}
-  <li className="px-4 pt-2">
+  <li className="px-0 pt-2">
     <SearchInput
       placeholder="Пошук..."
       onSelect={close}
