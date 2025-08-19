@@ -13,9 +13,10 @@ type Section = {
 interface SidebarMenuProps {
   sections: Section[];
   activeId?: string;
+  showMobileButton?: boolean;
 }
 
-export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
+export default function SidebarMenu({ sections, activeId, showMobileButton = true }: SidebarMenuProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -36,18 +37,20 @@ export default function SidebarMenu({ sections, activeId }: SidebarMenuProps) {
       </aside>
 
       {/* Mobile toggle button */}
-      <button
-        aria-label="Навігація по розділах"
-        title="Навігація по розділах"
-        className={`lg:hidden fixed top-22 right-4 z-20 p-2 rounded-md border transition ${
-          mobileMenuOpen
-            ? 'bg-black/80 border-white/40 shadow-[0_0_0_2px_rgba(255,255,255,0.3)]'
-            : 'bg-black/60 border-white/20'
-        }`}
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      >
-        <Anchor size={20} className={mobileMenuOpen ? 'text-white' : 'text-gray-300'} />
-      </button>
+      {showMobileButton && (
+        <button
+          aria-label="Навігація по розділах"
+          title="Навігація по розділах"
+          className={`lg:hidden fixed top-22 right-4 z-20 p-2 rounded-md border transition ${
+            mobileMenuOpen
+              ? 'bg-black/80 border-white/40 shadow-[0_0_0_2px_rgba(255,255,255,0.3)]'
+              : 'bg-black/60 border-white/20'
+          }`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <Anchor size={20} className={mobileMenuOpen ? 'text-white' : 'text-gray-300'} />
+        </button>
+      )}
 
       {/* Animated mobile menu */}
       <AnimatePresence>

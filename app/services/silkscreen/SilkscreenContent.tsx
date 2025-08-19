@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import SidebarMenu from '@/components/services/SidebarMenu';
 
 import SilkscreenDescription from '@/components/services/silkscreen/SilkscreenDescription';
@@ -20,10 +20,22 @@ const sections = [
 
 export default function SilkscreenContent() {
   const [activeId, setActiveId] = useState('');
+  const [showMobileButton, setShowMobileButton] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const bottomEdge = scrollY + viewportHeight;
+
+      const container = containerRef.current;
+      if (container) {
+        const containerBottom = container.offsetTop + container.offsetHeight;
+        setShowMobileButton(bottomEdge < containerBottom);
+      }
+
+      const scrollPosition = scrollY + 200;
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el && el.offsetTop <= scrollPosition) {
@@ -38,9 +50,9 @@ export default function SilkscreenContent() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0d0d0d] text-white">
+    <div ref={containerRef} className="min-h-screen flex flex-col bg-[#0d0d0d] text-white">
       <div className="relative flex-1 flex w-full max-w-7xl mx-auto px-4 lg:px-8 py-12">
-        <SidebarMenu sections={sections} activeId={activeId} />
+        <SidebarMenu sections={sections} activeId={activeId} showMobileButton={showMobileButton} />
         <main className="flex-1 space-y-24">
           <ServiceNavSection />
           <SilkscreenDescription />

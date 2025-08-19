@@ -60,7 +60,7 @@ export default function OrderFormSection() {
   };
 
   return (
-    <section id="contact" className="relative py-16 scroll-mt-10 text-white bg-black">
+    <section id="contact" className="relative py-16 px-2 scroll-mt-10 text-white bg-black">
       <h1 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
       </h1>
