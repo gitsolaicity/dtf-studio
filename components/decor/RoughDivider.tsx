@@ -3,53 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
-// 🔊 Универсальный хук для безопасного воспроизведения звука
-function useSafeAudioTrigger(src: string, volume = 0.3) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const hasInteractedRef = useRef(false);
-  const hasPlayedRef = useRef(false);
-
-  useEffect(() => {
-    audioRef.current = new Audio(src);
-    audioRef.current.volume = volume;
-    audioRef.current.preload = "auto";
-
-    const handleInteraction = () => {
-      hasInteractedRef.current = true;
-    };
-
-    const events = ["click", "touchstart"];
-    events.forEach((event) =>
-      window.addEventListener(event, handleInteraction, { once: true })
-    );
-
-    return () => {
-      events.forEach((event) =>
-        window.removeEventListener(event, handleInteraction)
-      );
-    };
-  }, [src, volume]);
-
-  const tryPlay = () => {
-    if (
-      hasInteractedRef.current &&
-      audioRef.current &&
-      !hasPlayedRef.current
-    ) {
-      audioRef.current
-        .play()
-        .then(() => {
-          hasPlayedRef.current = true;
-        })
-        .catch((err) => {
-          console.warn("Audio play blocked:", err);
-        });
-    }
-  };
-
-  return { tryPlay };
-}
-
 const RoughDivider = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -59,22 +12,20 @@ const RoughDivider = () => {
 
   const [visible, setVisible] = useState(false);
   const hasAnimatedOnceRef = useRef(false);
-  const { tryPlay } = useSafeAudioTrigger("/sfx/pincel.mp3", 0.2);
 
   useEffect(() => {
     if (isInView && !hasAnimatedOnceRef.current) {
       setVisible(true);
-      tryPlay();
       hasAnimatedOnceRef.current = true;
     }
-  }, [isInView, tryPlay]);
+  }, [isInView]);
 
   return (
     <div ref={ref} className="w-full overflow-hidden">
       <motion.svg
         viewBox="0 0 469.73 7.38"
         preserveAspectRatio="none"
-        className="w-full fill-cyan-950 lg:fill-white/10"
+        className="w-full fill-white/10"
         initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
         animate={
           visible
