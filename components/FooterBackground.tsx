@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function FooterBackground() {
   return (
@@ -9,8 +9,8 @@ export default function FooterBackground() {
       <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
         <motion.div
           className="flex w-[200%] h-full"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 20, ease: 'linear', repeat: Infinity }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
         >
           {[1, 2].map((_, i) => (
             <svg
@@ -42,8 +42,8 @@ export default function FooterBackground() {
       {/* Бегущий текст */}
       <motion.div
         className="absolute -top-[10vw] md:-top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"
-        animate={{ x: ['0%', '-100%'] }}
-        transition={{ duration: 80, ease: 'linear', repeat: Infinity }}
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{ duration: 80, ease: "linear", repeat: Infinity }}
       >
         {Array.from({ length: 30 }).map((_, i) => (
           <span key={i} className="mr-32">
