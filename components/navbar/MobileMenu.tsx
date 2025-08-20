@@ -48,6 +48,16 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
       className="w-full"
     />
   </li>
+  {/* 🏠 Головна */}
+  <li>
+    <Link
+      href="/"
+      onClick={close}
+      className="w-full flex items-center justify-between px-4 py-3 rounded-md hover:text-cyan-400 transition duration-300"
+    >
+      <span>Головна</span>
+    </Link>
+  </li>
               {menuItems.map((item) =>
                 item.label === 'Послуги' ? (
                   <li key={item.label}>

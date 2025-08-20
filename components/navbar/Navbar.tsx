@@ -27,9 +27,14 @@ export default function Navbar() {
       <nav className="bg-black/80 border-b border-[#e0e0e0]/20 fixed w-full z-50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-medium text-gray-300 tracking-wider">
-            <BlacklightLogo />
-          </Link>
+          <Link
+  href="/"
+  onClick={closeMenu}
+  className="text-2xl font-medium text-gray-300 tracking-wider"
+>
+  <BlacklightLogo />
+</Link>
+
 
           {/* Search button (desktop only) */}
           <div className="hidden md:inline-flex">

@@ -10,7 +10,16 @@ export default function DesktopMenu() {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
   return (
-    <ul className="hidden md:flex space-x-8 text-sm font-medium items-center relative">
+      <ul className="hidden md:flex space-x-8 text-sm font-medium items-center relative">
+  {/* 🏠 Головна */}
+  <li>
+    <Link
+      href="/"
+      className="text-gray-300 hover:text-cyan-400 transition duration-300"
+    >
+      Головна
+    </Link>
+  </li>
       {menuItems.map((item) =>
         item.label === 'Послуги' ? (
           <li
