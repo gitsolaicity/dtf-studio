@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FormBackgroundAnimated } from "../decor/FormBackgroundAnimated";
 import { Paperclip } from 'lucide-react';
+import PrimaryButton from "../PrimaryButton";
 
 
 export default function OrderFormSection() {
@@ -69,23 +70,22 @@ export default function OrderFormSection() {
       </p>
 
       <div className="mb-12 text-center px-8 flex flex-col sm:flex-row justify-center gap-4">
-  {/* Viber */}
-  <a
-    href="viber://chat?number=%2B380689991414"
-    className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-4 py-1.5 rounded-full shadow-md"
-    style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.2)' }}
-  >
-    Написати у Viber
-  </a>
+  <PrimaryButton
+  href="viber://chat?number=%2B380689991414"
+  color="purple"
+  variant="solid"
+>
+  Написати у Viber
+</PrimaryButton>
 
-  {/* Дзвінок */}
-  <a
-    href="tel:+380689991414"
-    className="inline-block bg-blue-600 hover:bg-blue-700 transition text-white px-4 py-1.5 rounded-full shadow-md"
-    style={{ boxShadow: '0 0 10px rgba(37, 99, 235, 0.2)' }}
-  >
-    Зателефонувати
-  </a>
+<PrimaryButton
+  href="tel:+380689991414"
+  color="blue"
+  variant="solid"
+>
+  Зателефонувати
+</PrimaryButton>
+
 </div>
 
 

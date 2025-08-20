@@ -15,6 +15,7 @@ import {
   websiteSchema,
   homepageSchema
 } from "@/lib/schema"
+import ScrollToTopButton from "@/components/ScrollToTopButton"
 
 export const metadata = {
   title: "Black Light",
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <RoughDivider />
             <Footer />
+            <ScrollToTopButton />
           </Providers>
         </SearchProvider>
 

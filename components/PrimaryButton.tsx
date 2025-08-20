@@ -5,20 +5,39 @@ import { ReactNode } from 'react';
 
 interface PrimaryButtonProps {
   href: string;
-  className?: string; // ✅ вот это
+  className?: string;
   children: ReactNode;
   icon?: ReactNode;
-  color?: 'cyan' | 'rose' | 'lime';
+  color?: 'cyan' | 'purple' | 'blue';
   variant?: 'solid' | 'subtle' | 'ghost';
 }
 
-const styleMap = {
+// Тип для стилей варианта
+interface StyleVariant {
+  bg: string;
+  hover: string;
+  ring: string;
+  text: string;
+  shadow?: string;
+  glow?: string;
+}
+
+// Тип для всей карты стилей
+type StyleMap = {
+  [color in 'cyan' | 'purple' | 'blue']: {
+    [variant in 'solid' | 'subtle' | 'ghost']: StyleVariant;
+  };
+};
+
+const styleMap: StyleMap = {
   cyan: {
     solid: {
       bg: 'bg-cyan-500',
       hover: 'hover:bg-cyan-300',
       ring: 'ring-2 ring-cyan-200',
       text: 'text-black font-semibold',
+      shadow: 'shadow-xl',
+      glow: '',
     },
     subtle: {
       bg: 'bg-transparent',
@@ -32,14 +51,15 @@ const styleMap = {
       ring: 'border border-white/30 hover:border-white/50',
       text: 'text-white/85 hover:text-white font-medium',
     },
-
   },
-  rose: {
+  purple: {
     solid: {
-      bg: 'bg-rose-500',
-      hover: 'hover:bg-rose-300',
-      ring: 'ring-2 ring-rose-200',
-      text: 'text-black font-semibold',
+      bg: 'bg-purple-800',
+      hover: 'hover:bg-purple-700',
+      ring: 'ring-2 ring-purple-500',
+      text: 'text-white font-medium',
+      shadow: 'shadow-md',
+      glow: 'shadow-[0_0_10px_rgba(139,92,246,0.2)]',
     },
     subtle: {
       bg: 'bg-transparent',
@@ -53,14 +73,15 @@ const styleMap = {
       ring: 'border border-white/30 hover:border-white/50',
       text: 'text-cyan-300 hover:text-white font-medium',
     },
-
   },
-  lime: {
+  blue: {
     solid: {
-      bg: 'bg-lime-500',
-      hover: 'hover:bg-lime-300',
-      ring: 'ring-2 ring-lime-200',
-      text: 'text-black font-semibold',
+      bg: 'bg-blue-700',
+      hover: 'hover:bg-blue-600',
+      ring: 'ring-2 ring-blue-500',
+      text: 'text-white font-medium',
+      shadow: 'shadow-md',
+      glow: 'shadow-[0_0_10px_rgba(37,99,235,0.2)]',
     },
     subtle: {
       bg: 'bg-transparent',
@@ -89,12 +110,13 @@ export default function PrimaryButton({
 
   return (
     <Link
-      href={href}
-      className={`inline-flex items-center gap-2 text-sm px-3 py-2 rounded-full shadow-xl transition duration-300
-        ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring} ${className ?? ''}`}
-    >
-      {icon}
-      {children}
-    </Link>
+  href={href}
+  className={`flex justify-center items-center gap-2 text-sm px-4 py-1.5 rounded-full transition duration-300 text-center
+    ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring ?? ''} ${styles.shadow ?? ''} ${styles.glow ?? ''} ${className ?? ''}`}
+>
+  {icon}
+  {children}
+</Link>
+
   );
 }

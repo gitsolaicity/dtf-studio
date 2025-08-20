@@ -61,14 +61,28 @@ SearchModal.Trigger = function Trigger() {
 
   return (
     <button
-      onClick={() => setOpen(true)}
-      aria-label="Відкрити пошук"
-      className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
+  onClick={() => setOpen(true)}
+  aria-label="Відкрити пошук"
+  className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
+>
+  <Search className="h-5 w-5" strokeWidth={1.8} />
+
+  <span className="inline-flex items-center gap-1"
+        title="Натисніть Ctrl + Alt + F, щоб відкрити пошук"
+        aria-label="Shortcut: Ctrl + Alt + F для відкриття пошуку"
+        >
+  {['Ctrl', 'Alt', 'F'].map((key) => (
+    <kbd
+      key={key}
+      className="px-2 py-1 text-xs text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-md font-mono shadow-sm transition hover:bg-white/20"
     >
-      <Search className="h-5 w-5" strokeWidth={1.8} />
-      <kbd className="px-2 py-1 text-xs text-[#9C9C9C] bg-black/30 border border-[#e0e0e0]/20 rounded-md font-mono select-none">
-        Ctrl+Alt+F
-      </kbd>
-    </button>
+      {key}
+    </kbd>
+  ))}
+</span>
+
+
+</button>
+
   )
 }
