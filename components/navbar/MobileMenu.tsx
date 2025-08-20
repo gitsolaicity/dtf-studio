@@ -125,6 +125,7 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
                   variant="subtle"
                   color="cyan"
                   className="w-full max-w-[calc(100%-2rem)] mx-3 justify-center"
+                  onClick={close} // ← добавлено
                 >
                   Увійти в кабінет
                 </PrimaryButton>
@@ -135,6 +136,7 @@ export default function MobileMenu({ isOpen, close }: { isOpen: boolean; close: 
                   variant="subtle"
                   color="cyan"
                   className="w-full max-w-[calc(100%-2rem)] mx-3 justify-center"
+                  onClick={close} // ← добавлено
 
                 >
                   Реєстрація

@@ -10,9 +10,9 @@ interface PrimaryButtonProps {
   icon?: ReactNode;
   color?: 'cyan' | 'purple' | 'blue';
   variant?: 'solid' | 'subtle' | 'ghost';
+  onClick?: () => void;
 }
 
-// Тип для стилей варианта
 interface StyleVariant {
   bg: string;
   hover: string;
@@ -22,7 +22,6 @@ interface StyleVariant {
   glow?: string;
 }
 
-// Тип для всей карты стилей
 type StyleMap = {
   [color in 'cyan' | 'purple' | 'blue']: {
     [variant in 'solid' | 'subtle' | 'ghost']: StyleVariant;
@@ -105,18 +104,19 @@ export default function PrimaryButton({
   color = 'cyan',
   variant = 'solid',
   className,
+  onClick,
 }: PrimaryButtonProps) {
   const styles = styleMap[color][variant];
 
   return (
     <Link
-  href={href}
-  className={`flex justify-center items-center gap-2 text-sm px-4 py-1.5 rounded-full transition duration-300 text-center
-    ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring ?? ''} ${styles.shadow ?? ''} ${styles.glow ?? ''} ${className ?? ''}`}
->
-  {icon}
-  {children}
-</Link>
-
+      href={href}
+      onClick={onClick}
+      className={`flex justify-center items-center gap-2 text-sm px-4 py-1.5 rounded-full transition duration-300 text-center
+        ${styles.bg} ${styles.hover} ${styles.text} ${styles.ring ?? ''} ${styles.shadow ?? ''} ${styles.glow ?? ''} ${className ?? ''}`}
+    >
+      {icon}
+      {children}
+    </Link>
   );
 }
