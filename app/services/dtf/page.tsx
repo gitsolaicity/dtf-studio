@@ -7,7 +7,7 @@ import DTFContent from "./DTFContent";
 const { metadata, structuredData } = generateMetadata({
   type: "ServicePage",
   title: "DTF-друк — Blacklight",
-  description: "Преміальний DTF-друк на замовлення",
+  description: "Преміальний DTF-друк на замовлення, Блэк Лайт печать.",
   slug: "services/dtf",
   logoUrl: "https://blacklight365.com/logo.png",
   priceRange: "150",
