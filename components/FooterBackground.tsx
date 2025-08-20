@@ -41,7 +41,7 @@ export default function FooterBackground() {
 
       {/* Бегущий текст */}
       <motion.div
-        className="absolute -top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"
+        className="absolute -top-[10vw] md:-top-2/3 left-0 w-[200%] whitespace-nowrap text-[38vw] font-bold tracking-widest text-white opacity-5 pointer-events-none select-none"
         animate={{ x: ['0%', '-100%'] }}
         transition={{ duration: 80, ease: 'linear', repeat: Infinity }}
       >
