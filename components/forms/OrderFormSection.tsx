@@ -1,14 +1,15 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { FormBackgroundAnimated } from "../decor/FormBackgroundAnimated";
-import { Paperclip } from 'lucide-react';
+import { Paperclip } from "lucide-react";
 import PrimaryButton from "../PrimaryButton";
 
-
 export default function OrderFormSection() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,8 +18,10 @@ export default function OrderFormSection() {
   const [fileName, setFileName] = useState("");
 
   const handleServiceToggle = (service: string) => {
-    setServices(prev =>
-      prev.includes(service) ? prev.filter(s => s !== service) : [...prev, service]
+    setServices((prev) =>
+      prev.includes(service)
+        ? prev.filter((s) => s !== service)
+        : [...prev, service]
     );
     setStatus("idle");
   };
@@ -35,7 +38,7 @@ export default function OrderFormSection() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    services.forEach(service => formData.append("services[]", service));
+    services.forEach((service) => formData.append("services[]", service));
 
     try {
       const res = await fetch("/api/contact", {
@@ -61,7 +64,10 @@ export default function OrderFormSection() {
   };
 
   return (
-    <section id="contact" className="relative py-16 px-2 scroll-mt-10 text-white bg-black">
+    <section
+      id="contact"
+      className="relative py-16 px-2 scroll-mt-10 text-white bg-black"
+    >
       <h1 className="text-4xl font-bold mb-6 text-center tracking-wide text-gray-300">
         Зв'язатися з нами
       </h1>
@@ -70,24 +76,18 @@ export default function OrderFormSection() {
       </p>
 
       <div className="mb-12 text-center px-8 flex flex-col sm:flex-row justify-center gap-4">
-  <PrimaryButton
-  href="viber://chat?number=%2B380689991414"
-  color="purple"
-  variant="solid"
->
-  Написати у Viber
-</PrimaryButton>
+        <PrimaryButton
+          href="viber://chat?number=%2B380689991414"
+          color="purple"
+          variant="solid"
+        >
+          Написати у Viber
+        </PrimaryButton>
 
-<PrimaryButton
-  href="tel:+380689991414"
-  color="blue"
-  variant="solid"
->
-  Зателефонувати
-</PrimaryButton>
-
-</div>
-
+        <PrimaryButton href="tel:+380689991414" color="blue" variant="solid">
+          Зателефонувати
+        </PrimaryButton>
+      </div>
 
       <form
         onSubmit={handleSubmit}
@@ -129,7 +129,7 @@ export default function OrderFormSection() {
         <div className="mb-6">
           <p className="text-sm text-gray-400 mb-2">Оберіть послугу:</p>
           <div className="flex flex-wrap gap-3">
-            {["DTF", "Вишивка", "Шовкографія"].map(service => (
+            {["DTF", "Вишивка", "Шовкографія"].map((service) => (
               <label
                 key={service}
                 className={`cursor-pointer px-4 py-2 rounded-md border transition ${
@@ -167,38 +167,37 @@ export default function OrderFormSection() {
           className="w-full mb-6 bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-3 placeholder-[#9C9C9C] text-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#e0e0e0]/40 resize-none transition"
         />
 
-  {/* Завантаження файлу */}
-<div className="mb-6">
-  <label htmlFor="file" className="block text-sm text-gray-400 mb-2">
-    Ескіз або малюнок (до 5MB)
-  </label>
+        {/* Завантаження файлу */}
+        <div className="mb-6">
+          <label htmlFor="file" className="block text-sm text-gray-400 mb-2">
+            Ескіз або малюнок (до 5MB)
+          </label>
 
-  <div className="relative flex items-center justify-baseline bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0]">
-    {/* Кнопка завантаження */}
-    <input
-      type="file"
-      name="file"
-      id="file"
-      accept="image/*,.pdf"
-      onChange={(e) => {
-        const file = e.target.files?.[0];
-        setFileName(file ? file.name : "");
-        setStatus("idle");
-      }}
-      className="absolute inset-0 opacity-0 cursor-pointer z-10"
-    />
-    <span className="bg-gray-800 text-[#e0e0e0] text-sm px-4 py-1.5 rounded-md cursor-pointer hover:border-[#e0e0e0] transition pointer-events-none inline-flex items-center gap-2">
-  <Paperclip size={16} className="text-[#e0e0e0]" />
-  Обрати файл
-</span>
+          <div className="relative flex items-center justify-baseline bg-black border border-[#e0e0e0]/30 rounded-md px-4 py-2 text-[#e0e0e0]">
+            {/* Кнопка завантаження */}
+            <input
+              type="file"
+              name="file"
+              id="file"
+              accept="image/*,.pdf"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                setFileName(file ? file.name : "");
+                setStatus("idle");
+              }}
+              className="absolute inset-0 opacity-0 cursor-pointer z-10"
+            />
+            <span className="bg-gray-800 text-[#e0e0e0] text-sm px-4 py-1.5 rounded-md cursor-pointer hover:border-[#e0e0e0] transition pointer-events-none inline-flex items-center gap-2">
+              <Paperclip size={16} className="text-[#e0e0e0]" />
+              Обрати файл
+            </span>
 
-    {/* Статус файлу */}
-    <span className="text-sm text-[#9C9C9C] pl-4 pointer-events-none">
-      {fileName ? `✅ ${fileName}` : "Файл не обрано"}
-    </span>
-  </div>
-</div>
-
+            {/* Статус файлу */}
+            <span className="text-sm text-[#9C9C9C] pl-4 pointer-events-none">
+              {fileName ? `✅ ${fileName}` : "Файл не обрано"}
+            </span>
+          </div>
+        </div>
 
         {/* Кнопка */}
         <button
@@ -212,9 +211,7 @@ export default function OrderFormSection() {
             }
           `}
           style={
-            formValid
-              ? { boxShadow: "0 0 20px rgba(224, 224, 224, 0.8)" }
-              : {}
+            formValid ? { boxShadow: "0 0 20px rgba(224, 224, 224, 0.8)" } : {}
           }
         >
           {status === "loading" ? "Надсилання..." : "Надіслати замовлення"}
@@ -232,18 +229,30 @@ export default function OrderFormSection() {
           </p>
         )}
         <p className="mt-6 text-sm text-gray-400 text-center select-none">
-  Натискаючи кнопку <strong>“Надіслати замовлення”</strong>, ви погоджуєтесь з нашими{" "}
-  <Link href="/privacy-policy" className="underline hover:text-white transition">
-    політикою конфіденційності
-  </Link>,{" "}
-  <Link href="/terms-of-use" className="underline hover:text-white transition">
-    умовами використання
-  </Link> та{" "}
-  <Link href="/public-offer" className="underline hover:text-white transition">
-    публічною офертою
-  </Link>.
-</p>
-
+          Натискаючи кнопку <strong>“Надіслати замовлення”</strong>, ви
+          погоджуєтесь з нашими{" "}
+          <Link
+            href="/privacy-policy"
+            className="underline hover:text-white transition"
+          >
+            політикою конфіденційності
+          </Link>
+          ,{" "}
+          <Link
+            href="/terms-of-use"
+            className="underline hover:text-white transition"
+          >
+            умовами використання
+          </Link>{" "}
+          та{" "}
+          <Link
+            href="/public-offer"
+            className="underline hover:text-white transition"
+          >
+            публічною офертою
+          </Link>
+          .
+        </p>
       </form>
     </section>
   );

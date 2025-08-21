@@ -1,4 +1,6 @@
-'use client'
+"use client";
+
+import PrimaryButton from "@/components/PrimaryButton";
 
 export default function AboutContent() {
   return (
@@ -6,12 +8,15 @@ export default function AboutContent() {
       <h1 className="text-3xl font-semibold mb-6">Про Blacklight</h1>
 
       <p className="mb-4">
-        <strong>Blacklight</strong> — це студія друку, яка поєднує технології, естетику та емоційний резонанс. Ми створюємо речі, які хочеться носити, показувати, дарувати.
+        <strong>Blacklight</strong> — це студія друку, яка поєднує технології,
+        естетику та емоційний резонанс. Ми створюємо речі, які хочеться носити,
+        показувати, дарувати.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-4">Наша місія</h2>
       <p className="mb-4">
-        Ми прагнемо зробити друк не просто послугою, а досвідом. Кожен замовлення — це діалог між брендом і людиною, між ідеєю і матеріалом.
+        Ми прагнемо зробити друк не просто послугою, а досвідом. Кожен
+        замовлення — це діалог між брендом і людиною, між ідеєю і матеріалом.
       </p>
 
       <h2 className="text-xl font-semibold mt-8 mb-4">Що ми робимо</h2>
@@ -32,22 +37,27 @@ export default function AboutContent() {
 
       <h2 className="text-xl font-semibold mt-8 mb-4">Зв’язок з нами</h2>
       <p className="mb-4">
-        Маєте ідею, яку хочете втілити? Напишіть нам у Вайбер — ми допоможемо зробити її реальністю.
+        Маєте ідею, яку хочете втілити? Напишіть нам у Вайбер — ми допоможемо
+        зробити її реальністю.
       </p>
 
-      <div className="mb-12">
-        <a
+      <div className="mb-12 text-center px-8 flex flex-col sm:flex-row justify-center gap-4">
+        <PrimaryButton
           href="viber://chat?number=%2B380689991414"
-          className="inline-block bg-purple-700 hover:bg-purple-800 transition text-white px-4 py-1.5 rounded-full shadow-md"
-          style={{ boxShadow: '0 0 6px rgba(139, 92, 246, 0.2)' }}
+          color="purple"
+          variant="solid"
         >
           Написати у Viber
-        </a>
+        </PrimaryButton>
+
+        <PrimaryButton href="tel:+380689991414" color="blue" variant="solid">
+          Зателефонувати
+        </PrimaryButton>
       </div>
 
       <p className="mt-12 text-xs text-gray-500 dark:text-gray-400">
         Останнє оновлення: 21 серпня 2025 року
       </p>
     </div>
-  )
+  );
 }

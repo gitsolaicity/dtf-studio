@@ -48,7 +48,7 @@ export default function SidebarMenu({ sections, activeId, showMobileButton = tru
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <Anchor size={20} className={mobileMenuOpen ? 'text-white' : 'text-gray-300'} />
+          <Anchor size={18} className={mobileMenuOpen ? 'text-white' : 'text-gray-300'} />
         </button>
       )}
 

@@ -34,7 +34,7 @@ export default function ServiceNavSection() {
       <div className="flex flex-wrap justify-items-start gap-3">
         {/* Назад до послуг */}
         <PrimaryButton href="/services" variant="subtle" icon={<ArrowLeft size={16} />}>
-          Назад до послуг
+          До послуг
         </PrimaryButton>
 
         {/* Навигация между услугами */}
