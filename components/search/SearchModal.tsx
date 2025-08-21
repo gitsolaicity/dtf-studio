@@ -74,7 +74,7 @@ SearchModal.Trigger = function Trigger() {
   {['Ctrl', 'Alt', 'F'].map((key) => (
     <kbd
       key={key}
-      className="px-2 py-1 text-xs text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-md font-mono shadow-sm transition hover:bg-white/20"
+      className="px-2 py-1 text-xs text-white/60 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md font-mono shadow-sm transition hover:bg-white/20 hover:text-white/90"
     >
       {key}
     </kbd>
