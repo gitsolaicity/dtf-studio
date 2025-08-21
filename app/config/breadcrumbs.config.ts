@@ -1,6 +1,12 @@
 export const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
-  "/": [
+  "/": [{ name: "Головна", url: "https://blacklight365.com" }],
+  "/about": [
     { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Про нас", url: "https://blacklight365.com/about" },
+  ],
+  "/portfolio": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Наші роботи", url: "https://blacklight365.com/portfolio" },
   ],
   "/contact": [
     { name: "Головна", url: "https://blacklight365.com" },
@@ -10,5 +16,42 @@ export const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
     { name: "Головна", url: "https://blacklight365.com" },
     { name: "Послуги", url: "https://blacklight365.com/services" },
   ],
+  "/privacy-policy": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    {
+      name: "Політика конфіденційності",
+      url: "https://blacklight365.com/privacy-policy",
+    },
+  ],
+  "/public-offer": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Публічна оферта", url: "https://blacklight365.com/public-offer" },
+  ],
+  "/terms-of-use": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    {
+      name: "Умови використання",
+      url: "https://blacklight365.com/terms-of-use",
+    },
+  ],
+  "/services/dtf": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Послуги", url: "https://blacklight365.com/services" },
+    { name: "DTF-друк", url: "https://blacklight365.com/services/dtf" },
+  ],
+  "/services/embroidery": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Послуги", url: "https://blacklight365.com/services" },
+    { name: "Вишивка", url: "https://blacklight365.com/services/embroidery" },
+  ],
+  "/services/silkscreen": [
+    { name: "Головна", url: "https://blacklight365.com" },
+    { name: "Послуги", url: "https://blacklight365.com/services" },
+    {
+      name: "Шовкографія",
+      url: "https://blacklight365.com/services/silkscreen",
+    },
+  ],
+
   // Добавляй другие маршруты по мере необходимости
 };

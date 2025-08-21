@@ -3,7 +3,7 @@ import { Shirt, LucideSpool, Paintbrush } from 'lucide-react';
 export const menuItems = [
   { label: 'Послуги', href: '/services' },
   { label: 'Наші роботи', href: '/portfolio' },
-  { label: 'Про нас', href: '/#about' },
+  { label: 'Про нас', href: '/about' },
   { label: 'Контакти', href: '/contact' },
 ];
 
