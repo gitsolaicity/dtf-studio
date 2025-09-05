@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FaChevronDown, FaSignInAlt } from "react-icons/fa";
 import { useState } from "react";
 import { menuItems, servicesSubmenu } from "./menuData";
-import PrimaryButton from "../PrimaryButton";
+// import PrimaryButton from "../PrimaryButton";
 
 export default function DesktopMenu() {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
@@ -82,7 +82,7 @@ export default function DesktopMenu() {
         )
       )}
 
-      <li>
+      {/* <li>
         <PrimaryButton
           href="/auth/login"
           variant="subtle"
@@ -92,7 +92,7 @@ export default function DesktopMenu() {
         >
           Увійти
         </PrimaryButton>
-      </li>
+      </li> */}
     </ul>
   );
 }

@@ -140,7 +140,7 @@ export default function MobileMenu({
               <div className="mt-4 py-4 border-t border-white/10 dark:border-white/10" />
 
               {/* 🔐 Кнопки входа и регистрации */}
-              <li>
+              {/* <li>
                 <PrimaryButton
                   href="/auth/login"
                   variant="subtle"
@@ -161,7 +161,7 @@ export default function MobileMenu({
                 >
                   Реєстрація
                 </PrimaryButton>
-              </li>
+              </li> */}
 
               {/* 📱 Соцмережі с заголовком */}
               <SocialMedia />
